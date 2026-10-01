@@ -7,19 +7,17 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '#home', active: true },
-    { name: 'Selected Works', href: '#selected-works' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
+    { name: 'About me', href: '#about' },
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
   ]
 
   return (
     <header className="sticky top-0 z-50 pt-4 pb-2 px-4 sm:px-6 lg:px-8">
-      {/* Floating Pill Bar in Deep Blue (#0A213D) */}
+      {/* Floating Pill Bar in Deep Blue */}
       <div className="max-w-6xl mx-auto bg-[#0A213D] text-white rounded-full px-5 py-2.5 sm:py-3 shadow-xl shadow-blue-950/15 border border-blue-900/40 flex items-center justify-between transition-all">
-        
-        {/* Brand / Logo (Yellow Circle + Bold White Text) */}
+
+        {/* Brand / Logo */}
         <a href="#home" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-full bg-[#FFB800] text-[#0A213D] font-extrabold text-sm flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
             A
@@ -29,24 +27,23 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Center Nav Links (Desktop) */}
+        {/* Center Nav Links */}
         <nav className="hidden md:flex items-center gap-7 text-xs font-semibold tracking-wide">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`transition-colors py-1 ${
-                link.active
+              className={`transition-colors py-1 ${link.active
                   ? 'text-[#FFB800] font-bold'
                   : 'text-neutral-300 hover:text-[#FFB800]'
-              }`}
+                }`}
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Right CTA Button (Pill White Button) */}
+        {/* Right CTA Button */}
         <div className="hidden sm:flex items-center gap-3">
           <a
             href="#contact"
@@ -84,11 +81,10 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-sm py-2 px-3 rounded-lg transition-colors ${
-                    link.active
+                  className={`text-sm py-2 px-3 rounded-lg transition-colors ${link.active
                       ? 'bg-blue-900/50 text-[#FFB800] font-bold'
                       : 'text-neutral-300 hover:bg-blue-900/40 hover:text-white'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </a>

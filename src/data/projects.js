@@ -3,7 +3,7 @@ export const projectsData = [
   {
     id: 'qupro-event-stage-2024',
     slug: 'qupro-event-stage-2024',
-    title: 'QUPRO Annual Gathering & Exhibition Stage',
+    title: 'Designing impactful event spatial experiences',
     category: '3D Layout',
     year: '2024',
     tagline: 'Spatial 3D Stage & Exhibition Layout',
@@ -14,25 +14,23 @@ export const projectsData = [
     coverImage: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
     featured: true,
     stats: [
-      { label: 'Stage Dimensions', value: '24m x 12m' },
-      { label: 'Render Fidelity', value: '4K Ultra HD' },
-      { label: 'Lighting Scenes', value: '6 Presets' },
-      { label: 'Turnaround', value: 'On Schedule' }
+      { label: 'Proyek Selesai', value: '30+' },
+      { label: 'Skala Presisi', value: '1:1' }
     ],
     floatingHighlights: [
       {
-        title: 'Spatial Blueprint',
-        subtitle: 'SketchUp 1:1 Scale Structure',
+        title: '01 — Spatial Event Layout',
+        subtitle: 'SketchUp · 3D Spatial Planning',
         image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80'
       },
       {
-        title: 'Photorealistic Lighting',
-        subtitle: 'Enscape Real-time Global Illumination',
+        title: '02 — 3D Event Visualization',
+        subtitle: 'SketchUp · Enscape Real-time Rendering',
         image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=200&q=80'
       },
       {
-        title: 'Modular Booth System',
-        subtitle: 'Fast assembly & flexible exhibitor zones',
+        title: '03 — Stage & Booth Design',
+        subtitle: 'Event Layout · Spatial Concepts',
         image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=200&q=80'
       }
     ],

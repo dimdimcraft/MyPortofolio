@@ -1,0 +1,19 @@
+<svg role="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Anti Gravity IDE</title>
+  <defs>
+    <linearGradient id="agy-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="agy-spark" x1="12" y1="4" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E0E7FF" />
+    </linearGradient>
+  </defs>
+  <rect width="24" height="24" rx="6" fill="url(#agy-grad)" />
+  <!-- Inverted Gravity Floating Core & Code Spark -->
+  <path d="M12 4.5L14.8 9.8L20 12L14.8 14.2L12 19.5L9.2 14.2L4 12L9.2 9.8L12 4.5Z" fill="url(#agy-spark)" />
+  <circle cx="12" cy="12" r="2.2" fill="#4F46E5" />
+  <path d="M7 6L5.5 7.5M17 6L18.5 7.5M7 18L5.5 16.5M17 18L18.5 16.5" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.7" />
+</svg>
