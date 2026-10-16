@@ -1,17 +1,22 @@
+import balairung1 from '../assets/3D/BALAIRUNG UI/1.png'
+import balairung2 from '../assets/3D/BALAIRUNG UI/2.png'
+import gbk1 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-33-51.png'
+import monas1 from '../assets/3D/MONAS/Enscape_2026-10-12-10-54-39.png'
+
 // Sesuai rules.md Section 6, 7, 19, & 23 & Permintaan User: Kategori Design, 3D Layout, dan WordPress
 export const projectsData = [
   {
     id: 'qupro-event-stage-2024',
-    slug: 'qupro-event-stage-2024',
+    slug: '3d-portfolio',
     title: 'Designing impactful event spatial experiences',
     category: '3D Layout',
     year: '2024',
     tagline: 'Spatial 3D Stage & Exhibition Layout',
     shortDescription: 'Spatial 3D stage and exhibition booth visualization with modular architectural layout and dynamic event lighting.',
-    client: 'QUPRO Indonesia',
+    client: 'Event & Venue Spatial Design',
     role: '3D Visualizer & Designer',
-    tools: ['SketchUp', 'Enscape', 'Canva'],
-    coverImage: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+    tools: ['SketchUp', 'Enscape 3D', 'Blender'],
+    coverImage: balairung1,
     featured: true,
     stats: [
       { label: 'Proyek Selesai', value: '30+' },
@@ -19,27 +24,28 @@ export const projectsData = [
     ],
     floatingHighlights: [
       {
-        title: '01 — Spatial Event Layout',
+        title: '01 — Balairung UI Convocation',
         subtitle: 'SketchUp · 3D Spatial Planning',
-        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80'
+        image: balairung1
       },
       {
-        title: '02 — 3D Event Visualization',
-        subtitle: 'SketchUp · Enscape Real-time Rendering',
-        image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=200&q=80'
+        title: '02 — GBK Basket Arena Event',
+        subtitle: 'SketchUp · Enscape 3D Rendering',
+        image: gbk1
       },
       {
-        title: '03 — Stage & Booth Design',
+        title: '03 — Monas Mega Stage Festival',
         subtitle: 'Event Layout · Spatial Concepts',
-        image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=200&q=80'
+        image: monas1
       }
     ],
-    overview: 'Konseptualisasi tata ruang panggung dan booth pameran berskala besar dengan pencahayaan dinamis dan tata letak modular untuk acara tahunan QUPRO.',
-    contribution: 'Membuat model 3D panggung secara mendetail di SketchUp, rendering visual realistis di Enscape, serta menyusun materi panduan instalasi visual.',
+    overview: 'Konseptualisasi tata ruang panggung dan venue pameran berskala besar dengan pencahayaan dinamis dan tata letak modular untuk 6 venue strategis.',
+    contribution: 'Membuat model 3D panggung secara mendetail di SketchUp, rendering visual realistis di Enscape & Blender, serta menyusun materi panduan instalasi visual.',
     process: 'Dimulai dari brief kebutuhan kapasitas panggung, drafting tata letak modular, penyesuaian pencahayaan dramatis, hingga final render resolusi tinggi untuk persetujuan klien.',
     gallery: [
-      'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80'
+      balairung1,
+      balairung2,
+      gbk1
     ]
   },
   {

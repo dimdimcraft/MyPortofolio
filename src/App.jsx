@@ -3,7 +3,10 @@ import Navbar from './components/layout/Navbar'
 import Hero from './components/home/Hero'
 import MarqueeBanner from './components/home/MarqueeBanner'
 import SelectedWorks from './components/home/SelectedWorks'
+import Contact from './components/home/Contact'
 import ProjectDetail from './pages/ProjectDetail'
+import Project3DDetail from './pages/Project3DDetail'
+import ProjectDesignDetail from './pages/ProjectDesignDetail'
 
 function HomePage() {
   return (
@@ -21,8 +24,11 @@ function HomePage() {
       {/* Selected Works Section */}
       <SelectedWorks />
 
+      {/* Contact Section */}
+      <Contact />
+
       {/* Minimalist Footer in Deep Blue (#0A213D) */}
-      <footer id="contact" className="border-t-2 border-[#0A213D]/10 py-12 bg-[#0A213D] text-white">
+      <footer className="border-t-2 border-[#0A213D]/10 py-12 bg-[#0A213D] text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs text-neutral-300">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -58,6 +64,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/work/3d-portfolio" element={<Project3DDetail />} />
+        <Route path="/work/3d-projects" element={<Project3DDetail />} />
+        <Route path="/work/qupro-event-stage-2024" element={<Project3DDetail />} />
+        <Route path="/work/design-portfolio" element={<ProjectDesignDetail />} />
+        <Route path="/work/design-detail" element={<ProjectDesignDetail />} />
         <Route path="/work/:slug" element={<ProjectDetail />} />
       </Routes>
     </Router>

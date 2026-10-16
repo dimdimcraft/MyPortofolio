@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="aff_grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2CD3E1" />
+      <stop offset="50%" stop-color="#0081C9" />
+      <stop offset="100%" stop-color="#0F4C81" />
+    </linearGradient>
+    <linearGradient id="aff_grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5BC0F8" />
+      <stop offset="100%" stop-color="#005B94" />
+    </linearGradient>
+    <linearGradient id="aff_grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#146C94" />
+      <stop offset="100%" stop-color="#19A7CE" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="#0E1B2A" />
+  <g transform="translate(4, 4) scale(0.833)">
+    <path d="M24 6 L42 38 L34 38 L24 20 L14 38 L6 38 Z" fill="url(#aff_grad1)" />
+    <path d="M24 6 L34 38 L24 28 L14 38 Z" fill="url(#aff_grad2)" opacity="0.85" />
+    <path d="M18 28 L30 28 L24 16 Z" fill="url(#aff_grad3)" />
+    <circle cx="24" cy="24" r="3" fill="#FFFFFF" opacity="0.9" />
+  </g>
+</svg>

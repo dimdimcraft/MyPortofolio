@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowUpRight,
@@ -12,6 +13,8 @@ import {
   Maximize2
 } from 'lucide-react'
 import { projectsData } from '../../data/projects'
+import { projects3DData } from '../../data/projects3d'
+import { projectsDesignData } from '../../data/projectsDesign'
 import { cn } from '../../utils/cn'
 
 import canvaIcon from '../../assets/tools/canva.svg'
@@ -58,6 +61,8 @@ const aboutFloatingCards = [
 
 export default function SelectedWorks() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [active3DPreviewIndex, setActive3DPreviewIndex] = useState(0)
+  const [activeDesignPreviewIndex, setActiveDesignPreviewIndex] = useState(0)
 
   const categories = ['All', '3D Layout', 'Design', 'WordPress']
 
@@ -76,7 +81,51 @@ export default function SelectedWorks() {
       projectsData.find((p) => p.id === 'beewhite-brand-identity'),
       projectsData.find((p) => p.id === 'startup-campus-lms-portal'),
     ].filter(Boolean)
-    : filteredProjects.slice(0, 3)
+    : activeCategory === '3D Layout'
+      ? projects3DData.slice(0, 3).map((p) => ({
+        id: p.id,
+        slug: '3d-portfolio',
+        is3d: true,
+        title: p.title,
+        category: '3D Layout',
+        year: p.year,
+        tagline: p.shortDesc,
+        coverImage: p.coverImage
+      }))
+      : activeCategory === 'Design'
+        ? [
+          {
+            id: 'event-promotional-design',
+            slug: 'design-portfolio',
+            isDesign: true,
+            title: 'Event & Promotional Design',
+            category: 'Design',
+            year: '2025 - 2026',
+            tagline: 'Key visual konser akbar, poster safari dakwah nasional, dan media promosi cetak/digital.',
+            coverImage: projectsDesignData[0]?.coverImage
+          },
+          {
+            id: 'social-media-editorial-design',
+            slug: 'design-portfolio',
+            isDesign: true,
+            title: 'Social Media & Editorial Design',
+            category: 'Design',
+            year: '2025 - 2026',
+            tagline: 'Konten kreatif feed Instagram, cover carousel edukatif, dan materi kemitraan digital.',
+            coverImage: projectsDesignData[5]?.coverImage
+          },
+          {
+            id: 'beewhite-brand-identity',
+            slug: 'design-portfolio',
+            isDesign: true,
+            title: 'Brand Identity & Visual System',
+            category: 'Design',
+            year: '2024',
+            tagline: 'Pedoman identitas visual komprehensif, publikasi editorial, dan hierarki tipografi.',
+            coverImage: projectsData.find((p) => p.id === 'beewhite-brand-identity')?.coverImage || projectsDesignData[1]?.coverImage
+          }
+        ]
+        : filteredProjects.slice(0, 3)
 
   // Secondary editorial cards for bottom row
   const editorialProjects = activeCategory === 'All'
@@ -304,11 +353,16 @@ export default function SelectedWorks() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wider uppercase bg-neutral-100 text-neutral-800 border border-neutral-200">
-                      {featuredProject.category}
+                      {activeCategory === '3D Layout' ? '3D Layout' : activeCategory === 'Design' ? 'Design' : featuredProject.category}
                     </span>
-                    {activeCategory !== '3D Layout' && (
+                    {activeCategory !== '3D Layout' && activeCategory !== 'Design' && (
                       <span className="text-xs text-neutral-400 font-mono">
                         {featuredProject.year} • {featuredProject.client}
+                      </span>
+                    )}
+                    {activeCategory === 'Design' && (
+                      <span className="text-xs text-neutral-400 font-mono">
+                        Event Posters &amp; Editorial Feeds
                       </span>
                     )}
                   </div>
@@ -316,14 +370,20 @@ export default function SelectedWorks() {
                   <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4 leading-tight">
                     {activeCategory === '3D Layout'
                       ? 'Creating 3D event spaces and visual experiences'
-                      : featuredProject.title}
+                      : activeCategory === 'Design'
+                        ? 'Crafting visual identities, event posters & editorial feeds'
+                        : featuredProject.title}
                   </h3>
 
                   <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-6">
-                    {featuredProject.shortDescription}
+                    {activeCategory === '3D Layout'
+                      ? featuredProject.shortDescription
+                      : activeCategory === 'Design'
+                        ? 'Koleksi desain komunikasi visual untuk event akbar kemanusiaan, konser amal, publikasi tabligh akbar, serta konten kreatif media sosial.'
+                        : featuredProject.shortDescription}
                   </p>
 
-                  {/* Stats Display: Two Large Info Boxes for 3D Layout vs 4-Pill stats for others */}
+                  {/* Stats Display: Custom Box for 3D Layout & Design vs 4-Pill stats for others */}
                   {activeCategory === '3D Layout' ? (
                     <div className="grid grid-cols-1 gap-3.5 my-6">
                       {/* Box 1: 30+ 3D Projects Completed */}
@@ -342,6 +402,27 @@ export default function SelectedWorks() {
                           </h4>
                           <p className="text-xs text-neutral-600 leading-relaxed">
                             Lebih dari 30+ proyek 3D tata ruang panggung, exhibition booth, dan convention venue telah sukses dikerjakan.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : activeCategory === 'Design' ? (
+                    <div className="grid grid-cols-1 gap-3.5 my-6">
+                      <div className="bg-neutral-50/90 hover:bg-neutral-50 border border-neutral-200/90 hover:border-neutral-300 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 shadow-2xs group">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-3xl sm:text-4xl font-extrabold text-[#0A213D] tracking-tight group-hover:text-black transition-colors">
+                            100+
+                          </span>
+                          <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/20 text-[#0A213D] border border-[#FFB800]/40">
+                            Portfolio
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-neutral-900 mb-1 leading-snug">
+                            Karya Desain Grafis &amp; Editorial
+                          </h4>
+                          <p className="text-xs text-neutral-600 leading-relaxed">
+                            Materi cetak publikasi A3/poster event, festival kampus, hingga cover carousel dan branding media sosial.
                           </p>
                         </div>
                       </div>
@@ -368,7 +449,10 @@ export default function SelectedWorks() {
 
                   {/* Tools Used Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-8">
-                    {featuredProject.tools.map((tool, idx) => (
+                    {(activeCategory === 'Design'
+                      ? ['Canva Pro', 'Inkscape', 'Photoshop', 'Affinity Designer']
+                      : featuredProject.tools
+                    ).map((tool, idx) => (
                       <span
                         key={idx}
                         className="text-xs px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 font-mono"
@@ -381,16 +465,26 @@ export default function SelectedWorks() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-neutral-100">
-                  <a
-                    href={`/work/${featuredProject.slug}`}
-                    className="inline-flex items-center gap-2 bg-neutral-900 text-white text-xs md:text-sm font-medium px-5 py-3 rounded-full hover:bg-neutral-800 transition-colors shadow-sm"
+                  <Link
+                    to={
+                      activeCategory === '3D Layout'
+                        ? '/work/3d-portfolio'
+                        : activeCategory === 'Design'
+                          ? '/work/design-portfolio'
+                          : `/work/${featuredProject.slug}`
+                    }
+                    className="inline-flex items-center gap-2 bg-[#0A213D] text-white text-xs md:text-sm font-semibold px-5 py-3 rounded-full hover:bg-[#122e54] transition-colors shadow-sm"
                   >
                     <span>
-                      {activeCategory === '3D Layout' ? 'Lihat Portofolio Lengkap' : 'Explore Case Study'}
+                      {activeCategory === '3D Layout'
+                        ? 'Lihat Portofolio Lengkap'
+                        : activeCategory === 'Design'
+                          ? 'Lihat Portofolio Desain'
+                          : 'Explore Case Study'}
                     </span>
                     <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                  {activeCategory !== '3D Layout' && (
+                  </Link>
+                  {activeCategory !== '3D Layout' && activeCategory !== 'Design' && (
                     <span className="text-xs text-neutral-500 font-mono px-3 py-2">
                       Role: {featuredProject.role}
                     </span>
@@ -398,57 +492,203 @@ export default function SelectedWorks() {
                 </div>
               </div>
 
-              {/* Right Column: Large Image + Floating Overlaid Highlight Cards */}
-              <div className="lg:col-span-7 relative">
-                <div className="relative aspect-[16/11] md:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200 bg-neutral-100 shadow-inner group">
-                  <img
-                    src={featuredProject.coverImage}
-                    alt={featuredProject.title}
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
-                  />
+              {/* Right Column: 3D Layout vs Design Preview Showcase vs Default Bento Image */}
+              {activeCategory === '3D Layout' ? (
+                <div className="lg:col-span-7 relative">
+                  <div className="relative aspect-[16/11] md:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200/90 bg-neutral-900 shadow-inner group">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={active3DPreviewIndex}
+                        src={projects3DData[active3DPreviewIndex]?.coverImage}
+                        alt={projects3DData[active3DPreviewIndex]?.title}
+                        initial={{ opacity: 0, scale: 1.04 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+                      />
+                    </AnimatePresence>
 
-                  {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/30 pointer-events-none" />
 
-                  {/* Floating pill badge top left */}
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/60 shadow-sm flex items-center gap-1.5 text-xs font-semibold text-neutral-900">
-                    <Maximize2 className="w-3.5 h-3.5 text-neutral-700" />
-                    <span>Interactive Visual</span>
-                  </div>
+                    {/* Top Bar inside preview */}
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between z-10">
+                      <div className="bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-200/80 shadow-md flex items-center gap-2 text-xs font-bold text-[#0A213D]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="truncate max-w-[200px] sm:max-w-none">
+                          {projects3DData[active3DPreviewIndex]?.title}
+                        </span>
+                      </div>
 
-                  {/* FLOATING MINI CARDS */}
-                  {featuredProject.floatingHighlights && (
-                    <div className="absolute right-3 sm:right-4 top-3 bottom-3 sm:top-4 sm:bottom-4 flex flex-col justify-center gap-2.5 sm:gap-3 pointer-events-none z-10 max-w-[275px] sm:max-w-[290px] hidden sm:flex">
-                      {featuredProject.floatingHighlights.map((hl, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: 0.2 + idx * 0.15 }}
+                      <Link
+                        to="/work/3d-portfolio"
+                        className="bg-black/60 hover:bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                      >
+                        <span>Halaman Detail 3D</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+
+                    {/* Floating mini highlight cards on the right */}
+                    <div className="absolute right-3 sm:right-4 top-14 bottom-4 flex flex-col justify-center gap-2 pointer-events-none z-10 max-w-[210px] sm:max-w-[230px]">
+                      {projects3DData.slice(0, 3).map((hl, idx) => (
+                        <button
+                          key={hl.id}
+                          type="button"
+                          onClick={() => setActive3DPreviewIndex(idx)}
                           className={cn(
-                            'bg-white/95 backdrop-blur-md p-2.5 rounded-2xl border border-neutral-200/90 shadow-xl shadow-black/10 flex items-center gap-3 pointer-events-auto hover:scale-102 transition-transform',
-                            idx === 1 ? '-translate-x-3' : ''
+                            'bg-white/95 backdrop-blur-md p-2 rounded-xl border border-neutral-200/90 shadow-xl shadow-black/20 flex items-center gap-2.5 pointer-events-auto hover:scale-102 transition-all cursor-pointer text-left',
+                            active3DPreviewIndex === idx
+                              ? 'ring-2 ring-[#FFB800] shadow-amber-500/25 bg-amber-50/90'
+                              : 'opacity-85 hover:opacity-100',
+                            idx === 1 ? '-translate-x-1.5 sm:-translate-x-2' : ''
+                          )}
+                        >
+                          <img
+                            src={hl.coverImage}
+                            alt={hl.title}
+                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover border border-neutral-200/80 shrink-0 shadow-2xs"
+                          />
+                          <div className="min-w-0 pr-1">
+                            <p className="text-[10px] sm:text-[11px] font-bold text-neutral-900 leading-snug tracking-tight truncate">
+                              {hl.title.split(' (')[0]}
+                            </p>
+                            <p className="text-[9px] text-neutral-500 leading-snug font-medium truncate">
+                              {hl.location}
+                            </p>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : activeCategory === 'Design' ? (
+                <div className="lg:col-span-7 relative">
+                  <div className="relative aspect-[16/11] md:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200/90 bg-neutral-900 shadow-inner group">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={activeDesignPreviewIndex}
+                        src={projectsDesignData[activeDesignPreviewIndex]?.coverImage}
+                        alt={projectsDesignData[activeDesignPreviewIndex]?.title}
+                        initial={{ opacity: 0, scale: 1.04 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+                      />
+                    </AnimatePresence>
+
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/30 pointer-events-none" />
+
+                    {/* Top Bar inside preview */}
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between z-10">
+                      <div className="bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-200/80 shadow-md flex items-center gap-2 text-xs font-bold text-[#0A213D]">
+                        <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
+                        <span className="truncate max-w-[200px] sm:max-w-none">
+                          {projectsDesignData[activeDesignPreviewIndex]?.title}
+                        </span>
+                      </div>
+
+                      <Link
+                        to="/work/design-portfolio"
+                        className="bg-black/60 hover:bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                      >
+                        <span>Halaman Detail Desain</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+
+                    {/* Floating mini highlight cards on the right */}
+                    <div className="absolute right-3 sm:right-4 top-14 bottom-4 flex flex-col justify-center gap-2 pointer-events-none z-10 max-w-[210px] sm:max-w-[230px]">
+                      {[
+                        { index: 0, title: 'Event & Promotion', subtitle: '5 Poster Event & Konser', image: projectsDesignData[0]?.coverImage },
+                        { index: 5, title: 'Social & Editorial', subtitle: '5 Feed & Carousel Medsos', image: projectsDesignData[5]?.coverImage },
+                        { index: 1, title: 'Konser Amal Palestina', subtitle: 'Key Visual Religi (Opick)', image: projectsDesignData[1]?.coverImage }
+                      ].map((hl, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setActiveDesignPreviewIndex(hl.index)}
+                          className={cn(
+                            'bg-white/95 backdrop-blur-md p-2 rounded-xl border border-neutral-200/90 shadow-xl shadow-black/20 flex items-center gap-2.5 pointer-events-auto hover:scale-102 transition-all cursor-pointer text-left',
+                            activeDesignPreviewIndex === hl.index
+                              ? 'ring-2 ring-[#FFB800] shadow-amber-500/25 bg-amber-50/90'
+                              : 'opacity-85 hover:opacity-100',
+                            idx === 1 ? '-translate-x-1.5 sm:-translate-x-2' : ''
                           )}
                         >
                           <img
                             src={hl.image}
                             alt={hl.title}
-                            className="w-10 h-10 rounded-xl object-cover border border-neutral-200/80 shrink-0 shadow-2xs"
+                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover border border-neutral-200/80 shrink-0 shadow-2xs"
                           />
                           <div className="min-w-0 pr-1">
-                            <p className="text-xs font-bold text-neutral-900 leading-snug tracking-tight">
+                            <p className="text-[10px] sm:text-[11px] font-bold text-neutral-900 leading-snug tracking-tight truncate">
                               {hl.title}
                             </p>
-                            <p className="text-[10px] text-neutral-500 leading-snug mt-0.5 font-medium">
+                            <p className="text-[9px] text-neutral-500 leading-snug font-medium truncate">
                               {hl.subtitle}
                             </p>
                           </div>
-                        </motion.div>
+                        </button>
                       ))}
                     </div>
-                  )}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="lg:col-span-7 relative">
+                  <div className="relative aspect-[16/11] md:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200 bg-neutral-100 shadow-inner group">
+                    <img
+                      src={featuredProject.coverImage}
+                      alt={featuredProject.title}
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
+                    />
+
+                    {/* Subtle gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+
+                    {/* Floating pill badge top left */}
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/60 shadow-sm flex items-center gap-1.5 text-xs font-semibold text-neutral-900">
+                      <Maximize2 className="w-3.5 h-3.5 text-neutral-700" />
+                      <span>Interactive Visual</span>
+                    </div>
+
+                    {/* FLOATING MINI CARDS */}
+                    {featuredProject.floatingHighlights && (
+                      <div className="absolute right-3 sm:right-4 top-3 bottom-3 sm:top-4 sm:bottom-4 flex flex-col justify-center gap-2.5 sm:gap-3 pointer-events-none z-10 max-w-[275px] sm:max-w-[290px] hidden sm:flex">
+                        {featuredProject.floatingHighlights.map((hl, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 0.2 + idx * 0.15 }}
+                            className={cn(
+                              'bg-white/95 backdrop-blur-md p-2.5 rounded-2xl border border-neutral-200/90 shadow-xl shadow-black/10 flex items-center gap-3 pointer-events-auto hover:scale-102 transition-transform',
+                              idx === 1 ? '-translate-x-3' : ''
+                            )}
+                          >
+                            <img
+                              src={hl.image}
+                              alt={hl.title}
+                              className="w-10 h-10 rounded-xl object-cover border border-neutral-200/80 shrink-0 shadow-2xs"
+                            />
+                            <div className="min-w-0 pr-1">
+                              <p className="text-xs font-bold text-neutral-900 leading-snug tracking-tight">
+                                {hl.title}
+                              </p>
+                              <p className="text-[10px] text-neutral-500 leading-snug mt-0.5 font-medium">
+                                {hl.subtitle}
+                              </p>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
             </div>
           </motion.div>
@@ -516,134 +756,25 @@ export default function SelectedWorks() {
                     {project.tagline || project.shortDescription}
                   </p>
 
-                  <a
-                    href={`/work/${project.slug}`}
+                  <Link
+                    to={
+                      project.slug === '3d-portfolio' || project.is3d
+                        ? '/work/3d-portfolio'
+                        : project.slug === 'design-portfolio' || project.isDesign
+                          ? '/work/design-portfolio'
+                          : `/work/${project.slug}`
+                    }
                     className="inline-flex items-center gap-2 text-xs font-medium text-white/90 group-hover:text-white group-hover:underline underline-offset-4"
                   >
                     <span>View Project</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* ========================================================== */}
-        {/* 3. BOTTOM SECTION: EDITORIAL CARDS + FEATURED CALLOUT      */}
-        {/* ========================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-          {/* Left Side: 2 Editorial Horizontal Cards */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            {editorialProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="bg-white rounded-3xl border border-neutral-200/90 p-5 md:p-6 shadow-2xs hover:shadow-md transition-shadow group flex flex-col sm:flex-row gap-5 items-center"
-              >
-                {/* Thumbnail with category pill */}
-                <div className="relative w-full sm:w-48 aspect-[16/10] sm:aspect-square rounded-2xl overflow-hidden shrink-0 bg-neutral-100 border border-neutral-200">
-                  <img
-                    src={project.coverImage}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-2.5 left-2.5 bg-neutral-900/80 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
-                    {project.category}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col justify-between w-full">
-                  <div>
-                    <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1.5">
-                      <span>{project.client}</span>
-                      <span>{project.year}</span>
-                    </div>
-                    <h4 className="text-lg font-bold text-neutral-900 tracking-tight group-hover:text-neutral-700 transition-colors">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-neutral-600 line-clamp-2 mt-1.5 leading-relaxed">
-                      {project.shortDescription}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-neutral-100">
-                    <div className="flex items-center gap-1.5">
-                      {project.tools.slice(0, 3).map((t, idx) => (
-                        <span key={idx} className="text-[10px] bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded font-mono">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href={`/work/${project.slug}`}
-                      className="text-xs font-semibold text-neutral-900 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
-                    >
-                      <span>Details</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right Side: Editorial Callout Box */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-neutral-900 text-white rounded-3xl p-8 lg:p-10 border border-neutral-800 shadow-sm relative overflow-hidden">
-
-            {/* Subtle background glow effect */}
-            <div className="absolute -right-16 -top-16 w-56 h-56 bg-neutral-800 rounded-full blur-3xl opacity-40 pointer-events-none" />
-
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs font-semibold tracking-wide uppercase mb-6">
-                <span>Direct Collaboration</span>
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-snug mb-4">
-                Have a project in mind across 3D, Design, or Web?
-              </h3>
-
-              <p className="text-sm text-neutral-400 leading-relaxed mb-6">
-                Whether you need a full 1:1 scale event stage layout in SketchUp &amp; Enscape, refined editorial branding, or a custom WordPress solution, let&apos;s build something exceptional.
-              </p>
-
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-3 text-xs text-neutral-300">
-                  <div className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                  <span>3D Event &amp; Exhibition Spatial Concepts</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-neutral-300">
-                  <div className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                  <span>Visual Identity &amp; Editorial Publication Systems</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-neutral-300">
-                  <div className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                  <span>Custom WordPress &amp; High-Performance Web</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-neutral-800 flex items-center justify-between">
-              <div>
-                <p className="text-xs text-neutral-400">Available for projects</p>
-                <p className="text-sm font-semibold text-white">aji@example.com</p>
-              </div>
-              <a
-                href="#contact"
-                className="bg-white text-neutral-950 px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-neutral-200 transition-colors inline-flex items-center gap-1.5 shadow-sm"
-              >
-                <span>Get in Touch</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-          </div>
-
-        </div>
 
       </div>
     </section>
