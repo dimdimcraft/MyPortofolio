@@ -49,32 +49,74 @@ export default function Contact() {
             </div>
 
             {/* Right: CTA */}
-            <div className="flex flex-col justify-between gap-8">
-              <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-                <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold mb-1">Available for projects</p>
-                <p className="text-xl md:text-2xl font-bold text-white mb-6">aji@example.com</p>
+            <div className="flex flex-col justify-between gap-6">
+              <div className="bg-neutral-800/70 border border-neutral-700/70 rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Available for projects</p>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Open to Work
+                  </span>
+                </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="space-y-1 mb-6">
                   <a
-                    href="mailto:aji@example.com"
-                    className="bg-white text-neutral-950 px-6 py-3 rounded-full text-sm font-semibold hover:bg-neutral-100 transition-colors inline-flex items-center justify-center gap-2 shadow-sm"
+                    href="mailto:dimdimcraft.id@gmail.com"
+                    className="text-xl md:text-2xl font-bold text-white hover:text-[#FFB800] transition-colors block truncate"
+                  >
+                    dimdimcraft.id@gmail.com
+                  </a>
+                  <p className="text-sm font-mono text-neutral-300">
+                    +62 819-5912-5564 • Bogor &amp; Jakarta, ID
+                  </p>
+                </div>
+
+                {/* Primary Action Buttons */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                  <a
+                    href="https://wa.me/6281959125564"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-[#FFB800] text-[#0A213D] hover:bg-amber-400 font-bold px-5 py-3 rounded-full text-xs sm:text-sm transition-all inline-flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <span>Chat WhatsApp</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+
+                  <a
+                    href="mailto:dimdimcraft.id@gmail.com"
+                    className="bg-white text-neutral-950 hover:bg-neutral-100 font-bold px-5 py-3 rounded-full text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2 shadow-sm"
                   >
                     <span>Send an Email</span>
                     <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+
+                {/* Social Badges */}
+                <div className="flex items-center gap-2 pt-4 border-t border-neutral-700/60 text-xs flex-wrap">
+                  <span className="text-neutral-400 text-[11px] mr-1">Connect:</span>
+                  <a
+                    href="https://www.linkedin.com/in/dimas-aji-nugroho"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1.5 rounded-full bg-neutral-700/60 hover:bg-blue-600/30 text-neutral-200 hover:text-white border border-neutral-600/60 transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <span>LinkedIn</span>
                   </a>
                   <a
                     href="https://www.instagram.com/dimasaji_ngrho/"
                     target="_blank"
                     rel="noreferrer"
-                    className="border border-neutral-600 text-neutral-200 px-6 py-3 rounded-full text-sm font-semibold hover:border-neutral-400 hover:text-white transition-colors inline-flex items-center justify-center gap-2"
+                    className="px-3 py-1.5 rounded-full bg-neutral-700/60 hover:bg-rose-600/30 text-neutral-200 hover:text-white border border-neutral-600/60 transition-colors inline-flex items-center gap-1.5"
                   >
-                    Instagram
+                    <span>Instagram</span>
                   </a>
                 </div>
               </div>
 
-              <p className="text-xs text-neutral-500 text-center lg:text-left">
-                Usually responds within 24 hours.
+              <p className="text-xs text-neutral-400 text-center lg:text-left flex items-center justify-center lg:justify-start gap-1.5 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Fast response via WhatsApp &amp; Email (within 24 hours).
               </p>
             </div>
           </div>

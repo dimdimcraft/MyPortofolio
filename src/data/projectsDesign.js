@@ -6,6 +6,7 @@ import konserAmalPoster from '../assets/DESIGN/Event & Promotional Design/WhatsA
 import jaulahSyaikhPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (1).png'
 import tablighPalembangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (2).png'
 import uinPadangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (3).png'
+import wantedPoster from '../assets/DESIGN/Event & Promotional Design/PosterPemberitahuanEvent.png'
 
 // 2. SOCIAL MEDIA & EDITORIAL DESIGN
 import feedPalestina from '../assets/DESIGN/Social Media & Editorial Design/1.png'
@@ -13,8 +14,17 @@ import feedApapunDemiKamu from '../assets/DESIGN/Social Media & Editorial Design
 import feedImpactAnggaran from '../assets/DESIGN/Social Media & Editorial Design/3.png'
 import feedSportqu from '../assets/DESIGN/Social Media & Editorial Design/4.jpg'
 import feedAksiZakat from '../assets/DESIGN/Social Media & Editorial Design/5.png'
+import feedKebutuhanQupro from '../assets/DESIGN/Social Media & Editorial Design/6.jpeg'
 
-// Dua kategori utama sesuai struktur folder fisik di src/assets/DESIGN
+// 3. EVENT GATE & ENTRANCE DESIGN
+import gateHni from '../assets/DESIGN/Event Gate & Entrance Design/1.png'
+import gatePalestinaRun from '../assets/DESIGN/Event Gate & Entrance Design/2.png'
+
+// 4. POSTER ART & CREATIVE EXPERIMENTS
+import posterAgakLaen from '../assets/DESIGN/Poster Art & Creative Experiments/POSTER AGAK LAEN 2.png'
+import posterTwilight from '../assets/DESIGN/Poster Art & Creative Experiments/TWILLIGHT.png'
+
+// Empat kategori utama sesuai struktur folder fisik di src/assets/DESIGN
 export const designCategoriesData = [
   {
     id: 'event-promotional',
@@ -33,7 +43,7 @@ export const designCategoriesData = [
       'Branding Multi-Logo Instansi & Kolaborator Resmi'
     ],
     stats: [
-      { label: 'Total Karya', value: '05 Poster' },
+      { label: 'Total Karya', value: '06 Poster' },
       { label: 'Standar Format', value: 'Print & Digital' },
       { label: 'Jangkauan Event', value: 'Nasional & Kampus' },
       { label: 'Tools Utama', value: 'Canva • Inkscape' }
@@ -88,6 +98,16 @@ export const designCategoriesData = [
         format: 'Ticketed Concert Poster',
         image: uinPadangPoster,
         desc: 'Poster festival milenial "Lost, Tired & Overthinking" bersama Ust. Ari Jauharuddin & Adzando Davema.'
+      },
+      {
+        id: 'wanted-palestina-run',
+        title: 'Wanted Runner Notice - Palestina Run Sumbar 2026',
+        client: 'Qupro Indonesia, AKSI & Pemprov Sumbar',
+        categoryTag: 'Official Notice & Announcement Poster',
+        year: '2026',
+        format: 'A3 Digital & Print Notice Poster',
+        image: wantedPoster,
+        desc: 'Poster pemberitahuan darurat (Wanted style) pencarian pemenang Podium 3 Perempuan Palestina Run 2026 dengan nomor BIB 1334, menonjolkan tipografi grunge, hierarki nomor BIB terpusat, dan integrasi penuh logo sponsor serta media partner.'
       }
     ]
   },
@@ -108,7 +128,7 @@ export const designCategoriesData = [
       'Eksplorasi Efek Tekstur Torn-Paper & Grid Blueprint'
     ],
     stats: [
-      { label: 'Total Karya', value: '05 Feeds' },
+      { label: 'Total Karya', value: '06 Feeds' },
       { label: 'Rasio Optimal', value: '4:5 Feed & Square' },
       { label: 'Tujuan Desain', value: 'High Engagement' },
       { label: 'Tools Utama', value: 'Canva • Inkscape' }
@@ -163,6 +183,111 @@ export const designCategoriesData = [
         format: 'Educational Carousel Cover',
         image: feedAksiZakat,
         desc: 'Visual edukasi literasi zakat dengan efek kertas sobek artistik dan pola blueprint grid modern.'
+      },
+      {
+        id: 'kebutuhan-qupro',
+        title: 'Hari Ini Kamu Butuh yang Mana? (Qupro Service Portfolio)',
+        client: 'Qupro Indonesia',
+        categoryTag: 'Interactive Promotional Feed',
+        year: '2025 - 2026',
+        format: 'Instagram Feed (4:5)',
+        image: feedKebutuhanQupro,
+        desc: 'Konten feed interaktif bergaya origami kertas lipat yang merangkum 4 pilar layanan utama Qupro: Creative Design, Talent, Produksi Event, dan Multimedia.'
+      }
+    ]
+  },
+  {
+    id: 'event-gate-entrance',
+    folderName: 'Event Gate & Entrance Design',
+    title: 'Event Gate & Entrance Design',
+    badge: 'KATEGORI 03',
+    scope: 'Main Entrance Arches • Start/Finish Gantries • 3D Layered Portals',
+    summary: 'Perancangan gerbang penyambutan utama (Main Gate), portal registrasi, dan gantry start/finish interaktif untuk event lari kemanusiaan, festival, perayaan milad, hingga agenda korporat skala besar.',
+    description: 'Fokus desain mencakup penataan bidang branding sponsor, integrasi ornamen 3D sirip akrilik/kayu, hierarki signage nama acara yang megah, serta rancang bangun visual portal yang presisi untuk kebutuhan fabrikasi panggung.',
+    tools: ['Canva Pro', 'Photoshop', 'Inkscape', 'SketchUp'],
+    deliverables: [
+      'Desain Gerbang Utama Event (Main Entrance Arch)',
+      'Gantry Start & Finish Lintasan Lari / Olahraga',
+      'Struktur Ornamen Layering 3D & Sirip Akrilik/Tripleks',
+      'Penempatan Sponsor Wall & Spot Branding Resmi'
+    ],
+    stats: [
+      { label: 'Total Karya', value: '02 Gerbang' },
+      { label: 'Tipe Konstruksi', value: 'Arch & Gantry' },
+      { label: 'Jangkauan Event', value: 'Sport & Corporate' },
+      { label: 'Tools Utama', value: 'Vector • 3D Layout' }
+    ],
+    cardAspect: 'aspect-[16/11] bg-gradient-to-b from-neutral-900 via-neutral-900 to-neutral-950',
+    imageFit: 'object-contain p-3 sm:p-5',
+    gridCols: 'grid-cols-1 md:grid-cols-2',
+    items: [
+      {
+        id: 'gate-hni-beyond',
+        title: 'Main Entrance Gate HNI 12th Beyond',
+        client: 'Halal Network International (HNI)',
+        categoryTag: 'Corporate Event Gate',
+        year: '2025 - 2026',
+        format: '3D Archway & Key Visual Gate',
+        image: gateHni,
+        desc: 'Desain gerbang utama perayaan milad ke-12 HNI (Beyond - Building the Future Together) dengan arsitektur sirip 3D dinamis dan aksen warna korporat toska, hijau, biru, dan oranye.'
+      },
+      {
+        id: 'gate-palestina-run',
+        title: 'Start & Finish Gate Arch - Palestina Run Sumatera Barat',
+        client: 'Qupro Indonesia, AKSI & Pemprov Sumbar',
+        categoryTag: 'Sport Event Arch Gate',
+        year: '2026',
+        format: 'Modular Truss & Rigging Arch Gate',
+        image: gatePalestinaRun,
+        desc: "Desain gerbang lintasan Start / Finish event lari amal kemanusiaan 'Palestina Run Sumatera Barat 2026' dengan tema grafis halftone dinamis, branding kolaborator, dan lambang resmi Tuah Sakato."
+      }
+    ]
+  },
+  {
+    id: 'poster-art-creative',
+    folderName: 'Poster Art & Creative Experiments',
+    title: 'Poster Art & Creative Experiments',
+    badge: 'KATEGORI 04',
+    scope: 'Cinematic Movie Parodies • Graduation Tributes • Visual Storytelling',
+    summary: 'Eksplorasi seni poster kreatif, manipulasi foto sinematik, dan parodi poster film layar lebar untuk tribute kelulusan, perayaan wisuda, serta proyek seni personal.',
+    description: 'Menggabungkan teknik compositing multi-layer, color grading sinematik moody dan dramatic spotlight, tipografi display bertema film layar lebar, serta narasi visual yang berkesan kuat sekaligus menghibur.',
+    tools: ['Photoshop', 'Canva Pro', 'Inkscape', 'Lightroom'],
+    deliverables: [
+      'Desain Poster Film Layar Lebar & Parodi Sinematik',
+      'Graduation / Milestone Commemorative Poster',
+      'Manipulasi & Compositing Foto Karakter Multi-Layer',
+      'Color Grading Mood Sinematik (Dark Twilight & Dramatic Spotlight)',
+      'Kustom Tipografi Judul & Layout Bintang/Kredit Film'
+    ],
+    stats: [
+      { label: 'Total Karya', value: '02 Poster Seni' },
+      { label: 'Format Desain', value: 'Cinematic Movie Poster' },
+      { label: 'Genre Visual', value: 'Parody & Memorial Art' },
+      { label: 'Teknik Utama', value: 'Compositing • Grading' }
+    ],
+    cardAspect: 'aspect-[3/4] sm:aspect-[4/5] bg-neutral-900',
+    imageFit: 'object-cover',
+    gridCols: 'grid-cols-1 md:grid-cols-2',
+    items: [
+      {
+        id: 'twilight-breaking-dawn-graduation',
+        title: 'The Twilight Saga: Breaking Dawn Part 2 (Graduation Edition)',
+        client: 'STT Terpadu Nurul Fikri Class of 2026',
+        categoryTag: 'Cinematic Movie Poster Tribute',
+        year: '2026',
+        format: 'Movie Poster (High-Res Print & Digital)',
+        image: posterTwilight,
+        desc: 'Karya tribute wisuda epik bernuansa film Twilight Breaking Dawn Part 2, menampilkan para wisudawan bertoga dengan latar hutan pinus berkabut tebal, pencahayaan dingin sinematik, serta tipografi emas khas saga Twilight.'
+      },
+      {
+        id: 'agak-laen-menyala-pantiku',
+        title: 'Agak Laen: Menyala Pantiku! (Movie Poster Parody)',
+        client: 'Creative Tribute & Graduation Project',
+        categoryTag: 'Creative Parody & Typography Art',
+        year: '2026',
+        format: 'Official Movie Teaser Poster',
+        image: posterAgakLaen,
+        desc: 'Parodi kreatif poster box office "Agak Laen" dengan siluet lubang kunci ikonik (keyhole composition), ekspresi komikal para karakter, tata teks kredit film jenaka seputar tugas akhir dan dosen pembimbing, serta grading kontras tinggi.'
       }
     ]
   }

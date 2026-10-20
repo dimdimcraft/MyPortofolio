@@ -42,7 +42,7 @@ export default function Hero() {
               </span>
               ,<br />
               Visual &amp; Digital Designer<br />
-              Based in Indonesia.
+              Based in Jakarta, Indonesia
             </motion.h1>
 
             {/* Subtext Description */}
@@ -55,12 +55,12 @@ export default function Hero() {
               I turn ideas into visuals. From 3D event stages and layout design to digital design and custom websites.
             </motion.p>
 
-            {/* Action Buttons (Dual Pill Button + Secondary Pill) */}
+            {/* Action Buttons (Dual Pill Button + Secondary WhatsApp Pill) */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap items-center gap-3.5"
             >
               {/* Dual-color pill button with attached yellow action circle */}
               <a
@@ -71,14 +71,6 @@ export default function Hero() {
                 <span className="w-8 h-8 rounded-full bg-[#FFB800] text-[#0A213D] flex items-center justify-center ml-3.5 group-hover:scale-110 transition-transform">
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </span>
-              </a>
-
-              {/* Secondary Clean Pill Button */}
-              <a
-                href="#about"
-                className="inline-flex items-center px-7 py-3 rounded-full border-2 border-[#0A213D] text-[#0A213D] font-bold text-xs sm:text-sm hover:bg-[#0A213D] hover:text-white transition-all duration-300 shadow-xs"
-              >
-                About Me
               </a>
             </motion.div>
 

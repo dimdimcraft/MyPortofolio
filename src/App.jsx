@@ -7,6 +7,7 @@ import Contact from './components/home/Contact'
 import ProjectDetail from './pages/ProjectDetail'
 import Project3DDetail from './pages/Project3DDetail'
 import ProjectDesignDetail from './pages/ProjectDesignDetail'
+import WebsiteDetail from './pages/WebsiteDetail'
 
 function HomePage() {
   return (
@@ -41,15 +42,18 @@ function HomePage() {
               Visual &amp; Digital Designer — 3D Event Layout, Design &amp; WordPress Development
             </p>
           </div>
-          <div className="flex flex-wrap gap-6 font-semibold text-neutral-200">
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#FFB800] transition-colors">
+          <div className="flex flex-wrap gap-5 sm:gap-6 font-semibold text-neutral-200">
+            <a href="https://www.linkedin.com/in/dimas-aji-nugroho" target="_blank" rel="noreferrer" className="hover:text-[#FFB800] transition-colors">
               LinkedIn
             </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-[#FFB800] transition-colors">
-              GitHub
+            <a href="https://www.instagram.com/dimasaji_ngrho/" target="_blank" rel="noreferrer" className="hover:text-[#FFB800] transition-colors">
+              Instagram
             </a>
-            <a href="mailto:aji@example.com" className="hover:text-[#FFB800] transition-colors">
-              Email Aji
+            <a href="https://wa.me/6281959125564" target="_blank" rel="noreferrer" className="hover:text-[#FFB800] transition-colors">
+              WhatsApp
+            </a>
+            <a href="mailto:dimdimcraft.id@gmail.com" className="hover:text-[#FFB800] transition-colors">
+              dimdimcraft.id@gmail.com
             </a>
           </div>
           <p className="text-neutral-400">&copy; {new Date().getFullYear()} Aji. All rights reserved.</p>
@@ -69,6 +73,9 @@ function App() {
         <Route path="/work/qupro-event-stage-2024" element={<Project3DDetail />} />
         <Route path="/work/design-portfolio" element={<ProjectDesignDetail />} />
         <Route path="/work/design-detail" element={<ProjectDesignDetail />} />
+        <Route path="/work/website-portfolio" element={<WebsiteDetail />} />
+        <Route path="/work/website-detail" element={<WebsiteDetail />} />
+        <Route path="/work/web-development" element={<WebsiteDetail />} />
         <Route path="/work/:slug" element={<ProjectDetail />} />
       </Routes>
     </Router>

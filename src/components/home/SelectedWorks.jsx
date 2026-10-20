@@ -14,7 +14,8 @@ import {
 } from 'lucide-react'
 import { projectsData } from '../../data/projects'
 import { projects3DData } from '../../data/projects3d'
-import { projectsDesignData } from '../../data/projectsDesign'
+import { projectsDesignData, designCategoriesData } from '../../data/projectsDesign'
+import ResumeSection from './ResumeSection'
 import { cn } from '../../utils/cn'
 
 import canvaIcon from '../../assets/tools/canva.svg'
@@ -51,8 +52,8 @@ const aboutFloatingCards = [
     offset: true,
   },
   {
-    title: 'WordPress',
-    tools: 'WordPress • Anti Gravity IDE',
+    title: 'Website',
+    tools: 'WordPress • Elementor',
     icon: wordpressIcon,
     bgColor: 'bg-blue-50',
     borderColor: 'border-blue-200/80',
@@ -63,78 +64,21 @@ export default function SelectedWorks() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [active3DPreviewIndex, setActive3DPreviewIndex] = useState(0)
   const [activeDesignPreviewIndex, setActiveDesignPreviewIndex] = useState(0)
+  const [activeWebsitePreviewIndex, setActiveWebsitePreviewIndex] = useState(0)
 
-  const categories = ['All', '3D Layout', 'Design', 'WordPress']
+  const categories = ['All', '3D Layout', 'Design', 'Website']
 
   // Filter projects based on selected tab
   const filteredProjects = activeCategory === 'All'
     ? projectsData
-    : projectsData.filter((p) => p.category === activeCategory)
+    : projectsData.filter((p) =>
+        activeCategory === 'Website'
+          ? (p.category === 'Website' || p.category === 'WordPress')
+          : p.category === activeCategory
+      )
 
   // Primary featured project for top bento card
   const featuredProject = filteredProjects.find((p) => p.featured) || filteredProjects[0] || projectsData[0]
-
-  // Vertical portrait cards
-  const portraitProjects = activeCategory === 'All'
-    ? [
-      projectsData.find((p) => p.id === 'qupro-event-stage-2024' || p.id === 'qupro-annual-gathering-2024'),
-      projectsData.find((p) => p.id === 'beewhite-brand-identity'),
-      projectsData.find((p) => p.id === 'startup-campus-lms-portal'),
-    ].filter(Boolean)
-    : activeCategory === '3D Layout'
-      ? projects3DData.slice(0, 3).map((p) => ({
-        id: p.id,
-        slug: '3d-portfolio',
-        is3d: true,
-        title: p.title,
-        category: '3D Layout',
-        year: p.year,
-        tagline: p.shortDesc,
-        coverImage: p.coverImage
-      }))
-      : activeCategory === 'Design'
-        ? [
-          {
-            id: 'event-promotional-design',
-            slug: 'design-portfolio',
-            isDesign: true,
-            title: 'Event & Promotional Design',
-            category: 'Design',
-            year: '2025 - 2026',
-            tagline: 'Key visual konser akbar, poster safari dakwah nasional, dan media promosi cetak/digital.',
-            coverImage: projectsDesignData[0]?.coverImage
-          },
-          {
-            id: 'social-media-editorial-design',
-            slug: 'design-portfolio',
-            isDesign: true,
-            title: 'Social Media & Editorial Design',
-            category: 'Design',
-            year: '2025 - 2026',
-            tagline: 'Konten kreatif feed Instagram, cover carousel edukatif, dan materi kemitraan digital.',
-            coverImage: projectsDesignData[5]?.coverImage
-          },
-          {
-            id: 'beewhite-brand-identity',
-            slug: 'design-portfolio',
-            isDesign: true,
-            title: 'Brand Identity & Visual System',
-            category: 'Design',
-            year: '2024',
-            tagline: 'Pedoman identitas visual komprehensif, publikasi editorial, dan hierarki tipografi.',
-            coverImage: projectsData.find((p) => p.id === 'beewhite-brand-identity')?.coverImage || projectsDesignData[1]?.coverImage
-          }
-        ]
-        : filteredProjects.slice(0, 3)
-
-  // Secondary editorial cards for bottom row
-  const editorialProjects = activeCategory === 'All'
-    ? [
-      projectsData.find((p) => p.id === 'sabana-grand-ballroom-3d'),
-      projectsData.find((p) => p.id === 'corporate-showcase-wp'),
-      projectsData.find((p) => p.id === 'editorial-poster-campaign'),
-    ].filter(Boolean)
-    : filteredProjects.slice(3)
 
   const getCategoryIcon = (category) => {
     switch (category) {
@@ -142,6 +86,7 @@ export default function SelectedWorks() {
         return <Box className="w-4 h-4" />
       case 'Design':
         return <Palette className="w-4 h-4" />
+      case 'Website':
       case 'WordPress':
         return <Globe className="w-4 h-4" />
       default:
@@ -353,9 +298,9 @@ export default function SelectedWorks() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wider uppercase bg-neutral-100 text-neutral-800 border border-neutral-200">
-                      {activeCategory === '3D Layout' ? '3D Layout' : activeCategory === 'Design' ? 'Design' : featuredProject.category}
+                      {activeCategory === '3D Layout' ? '3D Layout' : activeCategory === 'Design' ? 'Design' : activeCategory === 'Website' ? 'Website' : featuredProject.category}
                     </span>
-                    {activeCategory !== '3D Layout' && activeCategory !== 'Design' && (
+                    {activeCategory !== '3D Layout' && activeCategory !== 'Design' && activeCategory !== 'Website' && (
                       <span className="text-xs text-neutral-400 font-mono">
                         {featuredProject.year} • {featuredProject.client}
                       </span>
@@ -365,6 +310,11 @@ export default function SelectedWorks() {
                         Event Posters &amp; Editorial Feeds
                       </span>
                     )}
+                    {activeCategory === 'Website' && (
+                      <span className="text-xs text-neutral-400 font-mono">
+                        Client Websites &amp; 58 Project Archive
+                      </span>
+                    )}
                   </div>
 
                   <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4 leading-tight">
@@ -372,7 +322,9 @@ export default function SelectedWorks() {
                       ? 'Creating 3D event spaces and visual experiences'
                       : activeCategory === 'Design'
                         ? 'Crafting visual identities, event posters & editorial feeds'
-                        : featuredProject.title}
+                        : activeCategory === 'Website'
+                          ? 'Websites Built for Real Businesses.'
+                          : featuredProject.title}
                   </h3>
 
                   <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-6">
@@ -380,13 +332,14 @@ export default function SelectedWorks() {
                       ? featuredProject.shortDescription
                       : activeCategory === 'Design'
                         ? 'Koleksi desain komunikasi visual untuk event akbar kemanusiaan, konser amal, publikasi tabligh akbar, serta konten kreatif media sosial.'
-                        : featuredProject.shortDescription}
+                        : activeCategory === 'Website'
+                          ? 'Exploring my work across website development, digital presentation, and web design — from client websites to personal projects and interface concepts.'
+                          : featuredProject.shortDescription}
                   </p>
 
-                  {/* Stats Display: Custom Box for 3D Layout & Design vs 4-Pill stats for others */}
+                  {/* Stats Display: Custom Box for 3D, Design, Website vs 4-Pill stats for others */}
                   {activeCategory === '3D Layout' ? (
                     <div className="grid grid-cols-1 gap-3.5 my-6">
-                      {/* Box 1: 30+ 3D Projects Completed */}
                       <div className="bg-neutral-50/90 hover:bg-neutral-50 border border-neutral-200/90 hover:border-neutral-300 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 shadow-2xs group">
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-3xl sm:text-4xl font-extrabold text-[#0A213D] tracking-tight group-hover:text-black transition-colors">
@@ -427,6 +380,27 @@ export default function SelectedWorks() {
                         </div>
                       </div>
                     </div>
+                  ) : activeCategory === 'Website' ? (
+                    <div className="grid grid-cols-1 gap-3.5 my-6">
+                      <div className="bg-neutral-50/90 hover:bg-neutral-50 border border-neutral-200/90 hover:border-neutral-300 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 shadow-2xs group">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-3xl sm:text-4xl font-extrabold text-[#0A213D] tracking-tight group-hover:text-black transition-colors">
+                            50+
+                          </span>
+                          <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/20 text-[#0A213D] border border-[#FFB800]/40">
+                            Archive
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-neutral-900 mb-1 leading-snug">
+                            Website Projects &amp; Historical Archive
+                          </h4>
+                          <p className="text-xs text-neutral-600 leading-relaxed">
+                            Koleksi pengembangan website bisnis, properti, kontraktor, dan digital catalog berbasis WordPress &amp; Elementor.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   ) : (
                     featuredProject.stats && (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
@@ -450,8 +424,10 @@ export default function SelectedWorks() {
                   {/* Tools Used Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-8">
                     {(activeCategory === 'Design'
-                      ? ['Canva Pro', 'Inkscape', 'Photoshop', 'Affinity Designer']
-                      : featuredProject.tools
+                      ? ['Canva Pro', 'Inkscape']
+                      : activeCategory === 'Website'
+                        ? ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'Responsive Design']
+                        : featuredProject.tools
                     ).map((tool, idx) => (
                       <span
                         key={idx}
@@ -471,7 +447,9 @@ export default function SelectedWorks() {
                         ? '/work/3d-portfolio'
                         : activeCategory === 'Design'
                           ? '/work/design-portfolio'
-                          : `/work/${featuredProject.slug}`
+                          : activeCategory === 'Website'
+                            ? '/work/website-portfolio'
+                            : `/work/${featuredProject.slug}`
                     }
                     className="inline-flex items-center gap-2 bg-[#0A213D] text-white text-xs md:text-sm font-semibold px-5 py-3 rounded-full hover:bg-[#122e54] transition-colors shadow-sm"
                   >
@@ -480,11 +458,13 @@ export default function SelectedWorks() {
                         ? 'Lihat Portofolio Lengkap'
                         : activeCategory === 'Design'
                           ? 'Lihat Portofolio Desain'
-                          : 'Explore Case Study'}
+                          : activeCategory === 'Website'
+                            ? 'Lihat Portofolio Website'
+                            : 'Explore Case Study'}
                     </span>
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
-                  {activeCategory !== '3D Layout' && activeCategory !== 'Design' && (
+                  {activeCategory !== '3D Layout' && activeCategory !== 'Design' && activeCategory !== 'Website' && (
                     <span className="text-xs text-neutral-500 font-mono px-3 py-2">
                       Role: {featuredProject.role}
                     </span>
@@ -575,7 +555,12 @@ export default function SelectedWorks() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.35 }}
-                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+                        className={cn(
+                          'w-full h-full transition-transform duration-700 ease-out group-hover:scale-102',
+                          projectsDesignData[activeDesignPreviewIndex]?.folderName === 'Event Gate & Entrance Design'
+                            ? 'object-contain p-4 bg-neutral-950'
+                            : 'object-cover'
+                        )}
                       />
                     </AnimatePresence>
 
@@ -601,29 +586,173 @@ export default function SelectedWorks() {
                     </div>
 
                     {/* Floating mini highlight cards on the right */}
+                    <div className="absolute right-3 sm:right-4 top-14 bottom-4 flex flex-col justify-center gap-1.5 sm:gap-2 pointer-events-none z-10 max-w-[210px] sm:max-w-[230px]">
+                      {designCategoriesData.map((cat, idx) => {
+                        const catStartIndex = designCategoriesData
+                          .slice(0, idx)
+                          .reduce((acc, c) => acc + c.items.length, 0)
+                        const shortTitles = [
+                          'Event & Promotion',
+                          'Social & Editorial',
+                          'Gate & Entrance',
+                          'Poster Art & Parody'
+                        ]
+                        const subtitles = [
+                          `${cat.items.length} Poster Event & Konser`,
+                          `${cat.items.length} Feed & Konten Medsos`,
+                          `${cat.items.length} Gerbang & Gantry Event`,
+                          `${cat.items.length} Poster Seni & Film`
+                        ]
+                        const isSelected =
+                          activeDesignPreviewIndex >= catStartIndex &&
+                          activeDesignPreviewIndex < catStartIndex + cat.items.length
+
+                        return (
+                          <button
+                            key={cat.id}
+                            type="button"
+                            onClick={() => setActiveDesignPreviewIndex(catStartIndex)}
+                            className={cn(
+                              'bg-white/95 backdrop-blur-md p-1.5 sm:p-2 rounded-xl border border-neutral-200/90 shadow-xl shadow-black/20 flex items-center gap-2 sm:gap-2.5 pointer-events-auto hover:scale-102 transition-all cursor-pointer text-left',
+                              isSelected
+                                ? 'ring-2 ring-[#FFB800] shadow-amber-500/25 bg-amber-50/90'
+                                : 'opacity-85 hover:opacity-100',
+                              idx % 2 === 1 ? '-translate-x-1 sm:-translate-x-1.5' : ''
+                            )}
+                          >
+                            <img
+                              src={cat.items[0]?.image}
+                              alt={cat.title}
+                              className={cn(
+                                'w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-neutral-200/80 shrink-0 shadow-2xs',
+                                cat.folderName === 'Event Gate & Entrance Design'
+                                  ? 'object-contain bg-neutral-900 p-0.5'
+                                  : 'object-cover'
+                              )}
+                            />
+                            <div className="min-w-0 pr-1">
+                              <p className="text-[10px] sm:text-[11px] font-bold text-neutral-900 leading-snug tracking-tight truncate">
+                                {shortTitles[idx] || cat.title}
+                              </p>
+                              <p className="text-[8px] sm:text-[9px] text-neutral-500 leading-snug font-medium truncate">
+                                {subtitles[idx] || `${cat.items.length} Karya`}
+                              </p>
+                            </div>
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : activeCategory === 'Website' ? (
+                <div className="lg:col-span-7 relative">
+                  <div className="relative aspect-[16/11] md:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-200/90 bg-neutral-900 shadow-inner group">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeWebsitePreviewIndex}
+                        initial={{ opacity: 0, scale: 1.02 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className={cn(
+                          'w-full h-full flex flex-col justify-between p-6 sm:p-8 text-white relative',
+                          activeWebsitePreviewIndex === 0
+                            ? 'bg-gradient-to-br from-[#1A1612] via-[#2A231C] to-[#17130F]'
+                            : activeWebsitePreviewIndex === 1
+                              ? 'bg-gradient-to-br from-[#0B1526] via-[#10223E] to-[#0A172D]'
+                              : 'bg-gradient-to-br from-[#0A213D] via-[#132E50] to-[#0D1C2E]'
+                        )}
+                      >
+                        {/* Browser Chrome header */}
+                        <div className="flex items-center justify-between text-xs font-mono pb-4 border-b border-white/10 relative z-10">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                          </div>
+                          <span className="text-white/60 text-[11px] font-mono">
+                            {activeWebsitePreviewIndex === 0
+                              ? 'cabinafurniture.com'
+                              : activeWebsitePreviewIndex === 1
+                                ? 'apartemenbranzmegakuningan.com'
+                                : '58-websites-archive.directory'}
+                          </span>
+                        </div>
+
+                        {/* Center Stage */}
+                        <div className="my-auto text-left max-w-sm relative z-10">
+                          <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#FFB800] text-[#0A213D] font-bold inline-block mb-2">
+                            {activeWebsitePreviewIndex === 0
+                              ? 'Featured 01 — Furniture'
+                              : activeWebsitePreviewIndex === 1
+                                ? 'Featured 02 — Property'
+                                : 'Archive — 8 Sektor'}
+                          </span>
+                          <h4 className="text-xl sm:text-2xl font-black text-white mb-2 leading-tight">
+                            {activeWebsitePreviewIndex === 0
+                              ? 'Cabin Furniture'
+                              : activeWebsitePreviewIndex === 1
+                                ? 'Apartemen Branz Mega Kuningan'
+                                : '58 Website Projects Archive'}
+                          </h4>
+                          <p className="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
+                            {activeWebsitePreviewIndex === 0
+                              ? 'A business website project in the furniture sector.'
+                              : activeWebsitePreviewIndex === 1
+                                ? 'A property-focused website project for apartment information and presentation.'
+                                : 'Beyond selected projects: 58 domain arsip historis periode 2024–2025.'}
+                          </p>
+                        </div>
+
+                        {/* Bottom Bar */}
+                        <div className="flex items-center justify-between text-xs pt-4 border-t border-white/10 relative z-10">
+                          <span className="text-[11px] font-mono text-neutral-400">
+                            {activeWebsitePreviewIndex === 2 ? '58 Records Verified' : 'WordPress & Elementor'}
+                          </span>
+                          <Link
+                            to="/work/website-portfolio"
+                            className="inline-flex items-center gap-1.5 font-bold text-[#FFB800] hover:text-white transition-colors"
+                          >
+                            <span>Lihat Detail</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* Top Bar Link */}
+                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
+                      <Link
+                        to="/work/website-portfolio"
+                        className="bg-black/60 hover:bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                      >
+                        <span>Halaman Detail Website</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+
+                    {/* Floating mini highlight cards on the right */}
                     <div className="absolute right-3 sm:right-4 top-14 bottom-4 flex flex-col justify-center gap-2 pointer-events-none z-10 max-w-[210px] sm:max-w-[230px]">
                       {[
-                        { index: 0, title: 'Event & Promotion', subtitle: '5 Poster Event & Konser', image: projectsDesignData[0]?.coverImage },
-                        { index: 5, title: 'Social & Editorial', subtitle: '5 Feed & Carousel Medsos', image: projectsDesignData[5]?.coverImage },
-                        { index: 1, title: 'Konser Amal Palestina', subtitle: 'Key Visual Religi (Opick)', image: projectsDesignData[1]?.coverImage }
+                        { index: 0, title: 'Cabin Furniture', subtitle: 'Furniture & Catalog Web' },
+                        { index: 1, title: 'Branz Mega Kuningan', subtitle: 'Luxury Property Showcase' },
+                        { index: 2, title: '58 Web Archive', subtitle: '8 Industri (2024–2025)' }
                       ].map((hl, idx) => (
                         <button
                           key={idx}
                           type="button"
-                          onClick={() => setActiveDesignPreviewIndex(hl.index)}
+                          onClick={() => setActiveWebsitePreviewIndex(hl.index)}
                           className={cn(
                             'bg-white/95 backdrop-blur-md p-2 rounded-xl border border-neutral-200/90 shadow-xl shadow-black/20 flex items-center gap-2.5 pointer-events-auto hover:scale-102 transition-all cursor-pointer text-left',
-                            activeDesignPreviewIndex === hl.index
+                            activeWebsitePreviewIndex === hl.index
                               ? 'ring-2 ring-[#FFB800] shadow-amber-500/25 bg-amber-50/90'
                               : 'opacity-85 hover:opacity-100',
                             idx === 1 ? '-translate-x-1.5 sm:-translate-x-2' : ''
                           )}
                         >
-                          <img
-                            src={hl.image}
-                            alt={hl.title}
-                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover border border-neutral-200/80 shrink-0 shadow-2xs"
-                          />
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0A213D] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                            {idx === 0 ? 'CF' : idx === 1 ? 'BMK' : '58+'}
+                          </div>
                           <div className="min-w-0 pr-1">
                             <p className="text-[10px] sm:text-[11px] font-bold text-neutral-900 leading-snug tracking-tight truncate">
                               {hl.title}
@@ -695,85 +824,9 @@ export default function SelectedWorks() {
         )}
 
         {/* ========================================================== */}
-        {/* 2. MIDDLE SECTION: TALL VERTICAL CARDS (3-COLUMN LAYOUT)   */}
+        {/* 2. DAFTAR RIWAYAT HIDUP (CURRICULUM VITAE) SECTION         */}
         {/* ========================================================== */}
-        <div className="mb-14">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400">
-                Core Disciplines
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold text-neutral-900 tracking-tight mt-0.5">
-                Spatial, Visual &amp; Web Architectures
-              </h3>
-            </div>
-            <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 font-mono">
-              <span>03 Curated Dimensions</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {portraitProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative aspect-[4/5] rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-900 flex flex-col justify-between p-6 shadow-sm hover:shadow-xl transition-all duration-500"
-              >
-                {/* Background Image with smooth zoom */}
-                <img
-                  src={project.coverImage}
-                  alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-95"
-                />
-
-                {/* Dark Vignette Overlay for readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/20" />
-
-                {/* Card Top: Floating Category Badge */}
-                <div className="relative z-10 flex justify-between items-center">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-md text-neutral-900 border border-white/60 shadow-sm flex items-center gap-1.5">
-                    {getCategoryIcon(project.category)}
-                    <span>{project.category}</span>
-                  </span>
-                  <span className="text-xs font-mono text-white/80 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-full">
-                    {project.year}
-                  </span>
-                </div>
-
-                {/* Card Bottom: Frosted Pill Icon + Title + Description */}
-                <div className="relative z-10">
-                  {/* Floating Circular Icon Badge */}
-                  <div className="w-10 h-10 rounded-full bg-white/95 text-neutral-900 flex items-center justify-center shadow-lg mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {getCategoryIcon(project.category)}
-                  </div>
-
-                  <h4 className="text-xl font-bold text-white tracking-tight leading-snug mb-1 group-hover:text-neutral-100 transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-xs text-neutral-300 line-clamp-2 leading-relaxed mb-4">
-                    {project.tagline || project.shortDescription}
-                  </p>
-
-                  <Link
-                    to={
-                      project.slug === '3d-portfolio' || project.is3d
-                        ? '/work/3d-portfolio'
-                        : project.slug === 'design-portfolio' || project.isDesign
-                          ? '/work/design-portfolio'
-                          : `/work/${project.slug}`
-                    }
-                    className="inline-flex items-center gap-2 text-xs font-medium text-white/90 group-hover:text-white group-hover:underline underline-offset-4"
-                  >
-                    <span>View Project</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <ResumeSection />
 
 
       </div>

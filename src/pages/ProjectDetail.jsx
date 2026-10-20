@@ -133,16 +133,26 @@ export default function ProjectDetail() {
         {/* Next / Back CTA */}
         <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div>
-            <h4 className="font-bold text-lg text-[#0A213D]">Interested in similar work?</h4>
-            <p className="text-xs text-neutral-500">Let&apos;s collaborate on your next design or web development project.</p>
+            <h4 className="font-bold text-lg text-[#0A213D]">Tertarik Berkolaborasi?</h4>
+            <p className="text-xs text-neutral-500">Mulai diskusi proyek desain grafis, visualisasi 3D, atau pengembangan website.</p>
           </div>
-          <a
-            href="mailto:aji@example.com"
-            className="bg-[#0A213D] text-white hover:bg-[#FFB800] hover:text-[#0A213D] px-6 py-3 rounded-full text-xs font-bold transition-all flex items-center gap-2"
-          >
-            <span>Discuss This Project</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <a
+              href="https://wa.me/6281959125564"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#0A213D] text-white hover:bg-[#FFB800] hover:text-[#0A213D] px-6 py-3 rounded-full text-xs font-bold transition-all flex items-center gap-2"
+            >
+              <span>Chat WhatsApp</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+            <a
+              href="mailto:dimdimcraft.id@gmail.com"
+              className="bg-white border border-neutral-200 text-[#0A213D] hover:bg-neutral-50 px-5 py-3 rounded-full text-xs font-bold transition-all"
+            >
+              Kirim Email
+            </a>
+          </div>
         </div>
 
       </main>

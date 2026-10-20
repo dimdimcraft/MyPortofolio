@@ -628,13 +628,15 @@ export default function Project3DDetail() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              to="/#contact"
+            <a
+              href="https://wa.me/6281959125564"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 bg-[#FFB800] text-[#0A213D] font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full hover:bg-white transition-all shadow-md"
             >
               <span>Hubungi Saya</span>
               <ExternalLink className="w-4 h-4" />
-            </Link>
+            </a>
             <Link
               to="/"
               className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full hover:bg-white/20 transition-all border border-white/20"
