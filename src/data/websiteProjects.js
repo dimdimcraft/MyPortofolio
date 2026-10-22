@@ -2,10 +2,10 @@
 // Sesuai spesifikasi prompt: 58 domain archive, 2 featured client projects, personal portfolio, UI concepts & tools
 
 export const websiteHeroStats = [
-  { label: 'Spesialisasi Bidang', value: 'Web Development', desc: 'CMS & Custom Layout' },
-  { label: 'Periode Kontribusi', value: '2024 – 2025', desc: 'Historical Client Works' },
+  { label: 'Spesialisasi Bidang', value: 'Web Development', desc: 'CMS & Tata Letak Kustom' },
+  { label: 'Periode Kontribusi', value: '2024 – 2025', desc: 'Arsip Proyek Klien' },
   { label: 'Total Pengalaman', value: '50+ Proyek Web', desc: 'Beragam Sektor Industri' },
-  { label: 'Platform Utama', value: 'WordPress & Elementor', desc: 'Responsive & Semantic' },
+  { label: 'Platform Utama', value: 'WordPress & Elementor', desc: 'Responsif & Semantik' },
 ]
 
 export const featuredWebsites = [
@@ -13,9 +13,9 @@ export const featuredWebsites = [
     id: 'cabin-furniture',
     name: 'Cabin Furniture',
     domain: 'cabinafurniture.com',
-    category: 'Furniture / Business Website',
-    platformTags: ['WordPress', 'Elementor', 'Responsive Design', 'Catalog Showcase'],
-    description: 'A business website project in the furniture sector. Dirancang dengan fokus pada presentasi katalog produk kayu berkualitas tinggi, kurasi koleksi interior ruang, serta kemudahan navigasi bagi calon pembeli furnitur residensial dan komersial.',
+    category: 'Website Bisnis & Furnitur',
+    platformTags: ['WordPress', 'Elementor', 'Desain Responsif', 'Katalog Produk'],
+    description: 'Proyek website bisnis di bidang furnitur dan kerajinan kayu. Dirancang dengan fokus pada presentasi katalog produk berkualitas tinggi, kurasi koleksi interior ruang, serta kemudahan navigasi bagi calon pembeli furnitur residensial maupun komersial.',
     externalUrl: 'https://cabinafurniture.com/',
     highlights: [
       'Showcase Galeri Koleksi Furnitur & Woodcraft',
@@ -34,9 +34,9 @@ export const featuredWebsites = [
     id: 'branz-mega-kuningan',
     name: 'Apartemen Branz Mega Kuningan',
     domain: 'apartemenbranzmegakuningan.com',
-    category: 'Property / Apartment Website',
-    platformTags: ['WordPress', 'Elementor', 'Lead Generation', 'Virtual Presentation'],
-    description: 'A property-focused website project for apartment information and presentation. Mengusung arsitektur visual mewah kelas premium untuk merefleksikan hunian prestisius di kawasan segitiga emas Jakarta, lengkap dengan denah unit, fasilitas apartemen, dan formulir lead capture agen properti.',
+    category: 'Website Properti & Apartemen',
+    platformTags: ['WordPress', 'Elementor', 'Lead Generation', 'Presentasi Virtual'],
+    description: 'Proyek website properti untuk informasi dan presentasi unit apartemen. Mengusung arsitektur visual mewah kelas premium untuk merefleksikan hunian prestisius di kawasan segitiga emas Jakarta, lengkap dengan denah unit, fasilitas apartemen, dan formulir perolehan prospek (lead capture) bagi agen properti.',
     externalUrl: 'https://apartemenbranzmegakuningan.com/',
     highlights: [
       'Presentasi Fasilitas Mewah & Peta Lokasi Segitiga Emas',
@@ -54,17 +54,17 @@ export const featuredWebsites = [
 ]
 
 export const personalPortfolioProject = {
-  title: 'My Digital Portfolio',
-  type: 'Personal Portfolio Website',
-  role: 'UI Designer & Frontend Developer',
+  title: 'Website Portofolio Pribadi',
+  type: 'Website Portofolio Digital',
+  role: 'Desainer UI & Pengembang Frontend',
   period: '2025 – 2026',
-  description: 'A personal portfolio designed and developed to bring my work across visual design, 3D visualization, and web development into one cohesive digital experience.',
-  categoryTags: ['Personal Project', 'UI Design', 'Web Development', 'React + Vite', 'Tailwind CSS', 'Framer Motion'],
+  description: 'Portofolio digital pribadi yang dirancang dan dikembangkan untuk menyatukan seluruh rekam jejak karya di bidang desain visual, pemodelan 3D, dan pengembangan web ke dalam satu pengalaman digital yang terpadu dan responsif.',
+  categoryTags: ['Proyek Pribadi', 'Desain UI', 'Pengembangan Web', 'React + Vite', 'Tailwind CSS', 'Framer Motion'],
   features: [
-    'Modular Multi-Disciplinary Architecture (3D Layout, Graphic Design, Web Development)',
-    'Dynamic Lightbox Image Previews dengan Resolusi Penuh',
-    'Interactive Filter tabs & Horizontal Carousel Navigation',
-    'Custom Typography Hierarchy berpadu Estetika Editorial Modern'
+    'Arsitektur Modular Multi-Disiplin (Tata Ruang 3D, Desain Grafis, dan Pengembangan Web)',
+    'Pratinjau Gambar Lightbox Dinamis Beresolusi Penuh',
+    'Tab Filter Interaktif & Navigasi Korsel Horizontal Responsif',
+    'Hierarki Tipografi Kustom Berpadu Estetika Editorial Modern'
   ]
 }
 

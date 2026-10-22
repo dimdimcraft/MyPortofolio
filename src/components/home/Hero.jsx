@@ -26,7 +26,7 @@ export default function Hero() {
               <span className="w-2 h-2 bg-[#FFB800] border border-[#0A213D] absolute -top-1 -right-1" />
               <span className="w-2 h-2 bg-[#FFB800] border border-[#0A213D] absolute -bottom-1 -left-1" />
               <span className="w-2 h-2 bg-[#FFB800] border border-[#0A213D] absolute -bottom-1 -right-1" />
-              <span>Hello There! 👋</span>
+              <span>Halo Semua! 👋</span>
             </motion.div>
 
             {/* Main Headline */}
@@ -36,13 +36,13 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0A213D] leading-[1.12] mb-6"
             >
-              I&apos;m{' '}
+              Saya{' '}
               <span className="text-[#FFB800] relative inline-block underline decoration-[#FFB800]/50 decoration-4 underline-offset-6">
                 Aji
               </span>
               ,<br />
-              Visual &amp; Digital Designer<br />
-              Based in Jakarta, Indonesia
+              Desainer Visual &amp; Digital<br />
+              Berdomisili di Jakarta, Indonesia
             </motion.h1>
 
             {/* Subtext Description */}
@@ -52,7 +52,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-base sm:text-lg text-neutral-600 max-w-xl leading-relaxed mb-8 font-normal"
             >
-              I turn ideas into visuals. From 3D event stages and layout design to digital design and custom websites.
+              Mengubah gagasan menjadi solusi visual nyata. Mulai dari pemodelan tata ruang panggung 3D, materi desain grafis &amp; digital, hingga pengembangan website kustom.
             </motion.p>
 
             {/* Action Buttons (Dual Pill Button + Secondary WhatsApp Pill) */}
@@ -67,7 +67,7 @@ export default function Hero() {
                 href="#selected-works"
                 className="group inline-flex items-center bg-[#0A213D] text-white pl-6 pr-2 py-2 rounded-full font-bold text-xs sm:text-sm hover:bg-[#122e54] transition-all duration-300 shadow-xl shadow-blue-950/20"
               >
-                <span>View My Portfolio</span>
+                <span>Lihat Portofolio</span>
                 <span className="w-8 h-8 rounded-full bg-[#FFB800] text-[#0A213D] flex items-center justify-center ml-3.5 group-hover:scale-110 transition-transform">
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </span>
@@ -144,7 +144,7 @@ export default function Hero() {
                   <path d="M3 3l7 18 3-7 7-3L3 3z" />
                 </svg>
                 <div className="bg-[#0A213D] text-white px-3.5 py-1.5 rounded-full text-xs font-bold shadow-xl border border-blue-900/60 whitespace-nowrap">
-                  3D Stage Visualizer
+                  Visualisator 3D
                 </div>
               </motion.div>
 
@@ -182,7 +182,7 @@ export default function Hero() {
                   <path d="M3 3l7 18 3-7 7-3L3 3z" />
                 </svg>
                 <div className="bg-[#FFB800] text-[#0A213D] px-3.5 py-1.5 rounded-full text-xs font-black shadow-xl border border-amber-300 whitespace-nowrap">
-                  Designer
+                  Desainer Grafis
                 </div>
               </motion.div>
 

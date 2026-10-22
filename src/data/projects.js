@@ -8,13 +8,13 @@ export const projectsData = [
   {
     id: 'qupro-event-stage-2024',
     slug: '3d-portfolio',
-    title: 'Designing impactful event spatial experiences',
+    title: 'Merancang Pengalaman Spasial Panggung & Acara',
     category: '3D Layout',
     year: '2024',
-    tagline: 'Spatial 3D Stage & Exhibition Layout',
-    shortDescription: 'Spatial 3D stage and exhibition booth visualization with modular architectural layout and dynamic event lighting.',
-    client: 'Event & Venue Spatial Design',
-    role: '3D Visualizer & Designer',
+    tagline: 'Tata Ruang Panggung & Pameran 3D',
+    shortDescription: 'Visualisasi panggung 3D dan stan pameran dengan tata letak modular serta pencahayaan dinamis yang terukur.',
+    client: 'Desain Tata Ruang Acara',
+    role: 'Desainer & Visualisator 3D',
     tools: ['SketchUp', 'Enscape 3D', 'Blender'],
     coverImage: balairung1,
     featured: true,
@@ -24,18 +24,18 @@ export const projectsData = [
     ],
     floatingHighlights: [
       {
-        title: '01 — Balairung UI Convocation',
-        subtitle: 'SketchUp · 3D Spatial Planning',
+        title: '01 — Wisuda Balairung UI',
+        subtitle: 'SketchUp · Perencanaan Tata Ruang 3D',
         image: balairung1
       },
       {
-        title: '02 — GBK Basket Arena Event',
-        subtitle: 'SketchUp · Enscape 3D Rendering',
+        title: '02 — Panggung Acara GBK Basket Hall',
+        subtitle: 'SketchUp · Rendering Enscape 3D',
         image: gbk1
       },
       {
-        title: '03 — Monas Mega Stage Festival',
-        subtitle: 'Event Layout · Spatial Concepts',
+        title: '03 — Festival Panggung Megah Monas',
+        subtitle: 'Tata Letak Acara · Konsep Spasial',
         image: monas1
       }
     ],
@@ -51,25 +51,25 @@ export const projectsData = [
   {
     id: 'beewhite-brand-identity',
     slug: 'beewhite-brand-identity',
-    title: 'Beewhite Visual Identity & Editorial System',
+    title: 'Sistem Editorial & Identitas Visual Beewhite',
     category: 'Design',
     year: '2023',
-    tagline: 'Editorial Design & Brand Guidelines',
-    shortDescription: 'Comprehensive visual branding guidelines, editorial publications, clean typography hierarchy, and corporate collateral.',
+    tagline: 'Desain Editorial & Panduan Identitas Merek',
+    shortDescription: 'Panduan identitas visual komprehensif, publikasi editorial, hierarki tipografi bersih, dan materi pendukung korporat.',
     client: 'Beewhite',
-    role: 'Visual Designer',
+    role: 'Desainer Visual',
     tools: ['Affinity Designer', 'Canva', 'Inkscape'],
     coverImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1200&q=80',
     featured: true,
     floatingHighlights: [
       {
-        title: 'Typography System',
-        subtitle: 'Geometric sans with editorial hierarchy',
+        title: 'Sistem Tipografi',
+        subtitle: 'Tipografi geometris dengan hierarki editorial',
         image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=200&q=80'
       },
       {
-        title: 'Brand Guideline Book',
-        subtitle: '48-page comprehensive brand manual',
+        title: 'Buku Panduan Brand',
+        subtitle: 'Buku panduan manual identitas merek 48 halaman',
         image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=200&q=80'
       }
     ],
@@ -84,25 +84,25 @@ export const projectsData = [
   {
     id: 'startup-campus-lms-portal',
     slug: 'startup-campus-lms-portal',
-    title: 'Startup Campus Learning Academy Portal',
+    title: 'Portal Akademi Pembelajaran Startup Campus',
     category: 'WordPress',
     year: '2023',
-    tagline: 'Custom Corporate LMS & Program Showcase',
-    shortDescription: 'Modern corporate learning portal built on WordPress & Elementor, featuring modular curriculum tracks and fast responsive layouts.',
+    tagline: 'Portal Pembelajaran & Showcase Program Kustom',
+    shortDescription: 'Portal pembelajaran korporat modern berbasis WordPress & Elementor, dilengkapi kurikulum modular dan tata letak responsif cepat.',
     client: 'Startup Campus',
-    role: 'WordPress Specialist & UI Designer',
+    role: 'Spesialis WordPress & Desainer UI',
     tools: ['WordPress', 'Elementor Pro', 'CSS3', 'PHP'],
     coverImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
     featured: true,
     floatingHighlights: [
       {
-        title: 'Responsive Architecture',
-        subtitle: 'Optimized for mobile & tablet learners',
+        title: 'Arsitektur Responsif',
+        subtitle: 'Dioptimalkan untuk pengguna ponsel & tablet',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=200&q=80'
       },
       {
-        title: 'Custom Post Types',
-        subtitle: 'Dynamic tracks & mentor profiles',
+        title: 'Tipe Post Kustom',
+        subtitle: 'Alur program dinamis & profil mentor terpadu',
         image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=200&q=80'
       }
     ],
@@ -117,13 +117,13 @@ export const projectsData = [
   {
     id: 'sabana-grand-ballroom-3d',
     slug: 'sabana-grand-ballroom-3d',
-    title: 'Sabana Grand Ballroom & Spatial Concept',
+    title: 'Konsep Spasial & Aula Sabana Grand Ballroom',
     category: '3D Layout',
     year: '2024',
-    tagline: 'Architectural Event Venue Layout',
-    shortDescription: 'Full ballroom 3D event visualization including VIP seating arrangement, LED backdrop wall, and entrance foyer installation.',
+    tagline: 'Tata Ruang Venue & Acara Arsitektural',
+    shortDescription: 'Visualisasi 3D aula ballroom lengkap dengan susunan tempat duduk VIP, backdrop LED megah, dan instalasi foyer pintu masuk.',
     client: 'Event Production Partner',
-    role: '3D Event Visualizer',
+    role: 'Visualisator Acara 3D',
     tools: ['SketchUp', 'Enscape'],
     coverImage: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
     featured: false,
@@ -137,13 +137,13 @@ export const projectsData = [
   {
     id: 'editorial-poster-campaign',
     slug: 'editorial-poster-campaign',
-    title: 'Nusantara Creative Festival Poster Series',
+    title: 'Seri Poster Nusantara Creative Festival',
     category: 'Design',
     year: '2024',
-    tagline: 'Typography & Exhibition Posters',
-    shortDescription: 'Series of editorial typography posters and social announcements blending heritage motifs with contemporary Swiss grid layouts.',
+    tagline: 'Tipografi & Poster Pameran Seni',
+    shortDescription: 'Rangkaian poster tipografi editorial dan pengumuman media sosial yang memadukan motif warisan budaya dengan grid modern.',
     client: 'Creative Collective',
-    role: 'Graphic Designer',
+    role: 'Desainer Grafis',
     tools: ['Canva', 'Affinity Designer', 'Inkscape'],
     coverImage: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
     featured: false,
@@ -157,13 +157,13 @@ export const projectsData = [
   {
     id: 'corporate-showcase-wp',
     slug: 'corporate-showcase-wp',
-    title: 'Nexora Media Corporate WordPress Site',
+    title: 'Website Korporat WordPress Nexora Media',
     category: 'WordPress',
     year: '2023',
-    tagline: 'Clean Corporate CMS & Agency Portfolio',
-    shortDescription: 'High-speed business website with custom portfolio post filters, contact lead capture, and clean semantic structure.',
+    tagline: 'CMS Korporat Bersih & Portofolio Agensi',
+    shortDescription: 'Website bisnis berkecepatan tinggi dengan filter portofolio kustom, formulir penangkap prospek, dan struktur semantik rapi.',
     client: 'Nexora Media',
-    role: 'WordPress Developer',
+    role: 'Pengembang WordPress',
     tools: ['WordPress', 'Elementor', 'Tailwind / CSS'],
     coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     featured: false,

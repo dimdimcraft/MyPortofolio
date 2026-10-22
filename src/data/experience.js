@@ -1,27 +1,27 @@
 // Sesuai rules.md Section 9 & 19: Hanya menampilkan entitas yang terverifikasi
 export const experienceData = [
   {
-    period: '2023 — Present',
+    period: '2023 — Sekarang',
     organization: 'QUPRO Indonesia',
-    role: 'Visual & 3D Designer',
-    description: 'Developing 3D event stage visualizations, visual brand identities, and promotional design assets using SketchUp, Enscape, and digital design suites.'
+    role: 'Desainer Visual & 3D',
+    description: 'Mengembangkan visualisasi tata ruang panggung acara 3D, identitas visual merek, serta aset desain promosi menggunakan SketchUp, Enscape, dan rangkaian software desain grafis.'
   },
   {
     period: '2022 — 2023',
     organization: 'Beewhite',
-    role: 'Visual Designer',
-    description: 'Designed editorial collateral, digital branding, social visual systems, and marketing materials.'
+    role: 'Desainer Visual',
+    description: 'Merancang publikasi editorial, identitas merek digital, sistem grafis media sosial, dan materi pemasaran visual.'
   },
   {
     period: '2022',
     organization: 'Startup Campus',
-    role: 'Digital Designer & Web Contributor',
-    description: 'Collaborated on user interface components, digital graphics, and web landing page assets.'
+    role: 'Desainer Digital & Kontributor Web',
+    description: 'Berkolaborasi dalam perancangan komponen antarmuka pengguna (UI), grafis digital, dan aset visual landing page web.'
   },
   {
     period: '2020 — 2024',
     organization: 'STT Terpadu Nurul Fikri',
-    role: 'Informatics Engineering Student & Creative Contributor',
-    description: 'Studied computer science fundamentals, web technologies, and contributed to campus digital media publications.'
+    role: 'Mahasiswa Teknik Informatika & Kontributor Kreatif',
+    description: 'Mempelajari fondasi ilmu komputer, teknologi pengembangan web, serta berkontribusi aktif dalam publikasi media digital kampus.'
   }
 ]

@@ -8,7 +8,7 @@ export default function Navbar() {
   const location = useLocation()
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Beranda', path: '/' },
     { name: '3D Layout', path: '/work/3d-portfolio' },
     { name: 'Design', path: '/work/design-portfolio' },
     { name: 'Website', path: '/work/website-portfolio' },
@@ -75,7 +75,7 @@ export default function Navbar() {
             rel="noreferrer"
             className="bg-white text-[#0A213D] hover:bg-[#FFB800] hover:text-[#0A213D] px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-1.5"
           >
-            <span>Contact Me</span>
+            <span>Hubungi Saya</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -122,17 +122,6 @@ export default function Navbar() {
                   </Link>
                 )
               })}
-              <div className="pt-2 border-t border-blue-900/60">
-                <a
-                  href="https://wa.me/6281959125564"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full bg-[#FFB800] text-[#0A213D] font-bold text-center py-2.5 rounded-xl block text-xs"
-                >
-                  Contact Me
-                </a>
-              </div>
             </div>
           </motion.div>
         )}

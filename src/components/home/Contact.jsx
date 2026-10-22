@@ -21,29 +21,29 @@ export default function Contact() {
             {/* Left: Text Content */}
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs font-semibold tracking-wide uppercase mb-6">
-                <span>Direct Collaboration</span>
+                <span>Kolaborasi Langsung</span>
               </div>
 
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
-                Have a project in mind across 3D, Design, or Web?
+                Punya rencana proyek 3D, Desain, atau Website?
               </h2>
 
               <p className="text-sm md:text-base text-neutral-400 leading-relaxed mb-8 max-w-lg">
-                Whether you need a full 1:1 scale event stage layout in SketchUp &amp; Enscape, refined editorial branding, or a custom WordPress solution, let&apos;s build something exceptional.
+                Baik kebutuhan tata ruang panggung skala 1:1 di SketchUp &amp; Enscape, identitas editorial yang matang, hingga solusi website WordPress kustom, mari wujudkan bersama.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm text-neutral-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
-                  <span>3D Event &amp; Exhibition Spatial Concepts</span>
+                  <span>Konsep Tata Ruang 3D Event &amp; Pameran Booth</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-neutral-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
-                  <span>Visual Identity &amp; Editorial Publication Systems</span>
+                  <span>Identitas Visual &amp; Publikasi Editorial Acara</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-neutral-300">
                   <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
-                  <span>Custom WordPress &amp; High-Performance Web</span>
+                  <span>Website WordPress Kustom &amp; Berkinerja Tinggi</span>
                 </div>
               </div>
             </div>
@@ -52,10 +52,10 @@ export default function Contact() {
             <div className="flex flex-col justify-between gap-6">
               <div className="bg-neutral-800/70 border border-neutral-700/70 rounded-3xl p-6 md:p-8 backdrop-blur-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Available for projects</p>
+                  <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Tersedia untuk proyek baru</p>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Open to Work
+                    Siap Berkolaborasi
                   </span>
                 </div>
 
@@ -87,14 +87,14 @@ export default function Contact() {
                     href="mailto:dimdimcraft.id@gmail.com"
                     className="bg-white text-neutral-950 hover:bg-neutral-100 font-bold px-5 py-3 rounded-full text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2 shadow-sm"
                   >
-                    <span>Send an Email</span>
+                    <span>Kirim Email</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
 
                 {/* Social Badges */}
                 <div className="flex items-center gap-2 pt-4 border-t border-neutral-700/60 text-xs flex-wrap">
-                  <span className="text-neutral-400 text-[11px] mr-1">Connect:</span>
+                  <span className="text-neutral-400 text-[11px] mr-1">Terhubung:</span>
                   <a
                     href="https://www.linkedin.com/in/dimas-aji-nugroho"
                     target="_blank"
@@ -116,7 +116,7 @@ export default function Contact() {
 
               <p className="text-xs text-neutral-400 text-center lg:text-left flex items-center justify-center lg:justify-start gap-1.5 font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Fast response via WhatsApp &amp; Email (within 24 hours).
+                Respons cepat via WhatsApp &amp; Email (maksimal 24 jam).
               </p>
             </div>
           </div>

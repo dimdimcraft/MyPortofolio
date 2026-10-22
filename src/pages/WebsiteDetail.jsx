@@ -179,19 +179,18 @@ export default function WebsiteDetail() {
               <div className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-4">
                 <span className="text-xs sm:text-sm font-semibold tracking-wider text-[#0A213D]/70 uppercase font-sans mb-3 flex items-center gap-1.5">
                   <Globe className="w-4 h-4 text-[#FFB800]" />
-                  <span>WEB DEVELOPMENT</span>
+                  <span>PENGEMBANGAN WEBSITE</span>
                 </span>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0A213D] leading-[1.08] mb-5">
-                  Websites Built for<br />
+                  Situs Web untuk<br />
                   <span className="text-[#0A213D] relative inline-block underline decoration-[#FFB800] decoration-4 underline-offset-8">
-                    Real Businesses.
+                    Kebutuhan Bisnis Nyata.
                   </span>
                 </h1>
 
                 <p className="text-sm sm:text-base text-neutral-600 max-w-md leading-relaxed mb-8 font-normal">
-                  Exploring my work across website development, digital presentation, and web design —
-                  from client websites to personal projects and interface concepts.
+                  Mengeksplorasi karya pengembangan web, presentasi digital, dan perancangan UI — mulai dari situs web klien hingga proyek personal dan konsep antarmuka.
                 </p>
 
                 {/* Stylish Pill Action Button */}
@@ -224,7 +223,7 @@ export default function WebsiteDetail() {
                   <div className="w-48 sm:w-56 h-[320px] sm:h-[360px] bg-[#0A213D] rounded-3xl sm:rounded-[2rem] shadow-2xl shadow-[#0A213D]/30 border border-blue-900/40 relative flex flex-col justify-between items-center p-5 overflow-hidden">
                     {/* Top Label */}
                     <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FFB800] font-bold">
-                      Web Architecture
+                      Arsitektur Web
                     </span>
 
                     {/* Subtle Blueprint Grid Pattern */}
@@ -255,7 +254,7 @@ export default function WebsiteDetail() {
                     </div>
                     <div>
                       <p className="text-xs font-black text-[#0A213D] leading-tight">WordPress</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">CMS Platform</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Platform CMS</span>
                     </div>
                   </motion.div>
 
@@ -276,7 +275,7 @@ export default function WebsiteDetail() {
                         <span className="text-[9px] font-mono font-bold uppercase text-amber-700">Page Builder</span>
                       </div>
                       <p className="text-xs sm:text-sm font-black text-[#0A213D] leading-tight">Elementor Pro</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Custom Layouts</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Tata Letak Kustom</span>
                     </div>
                   </motion.div>
 
@@ -291,7 +290,7 @@ export default function WebsiteDetail() {
                     </div>
                     <div>
                       <p className="text-xs font-black text-[#0A213D] leading-tight">HTML5 • CSS3</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Semantic Web</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Web Semantik</span>
                     </div>
                   </motion.div>
 
@@ -308,7 +307,7 @@ export default function WebsiteDetail() {
                   <span className="w-2.5 h-2.5 rounded-full bg-white ring-2 ring-neutral-300 shadow-xs" title="Clean White" />
                 </div>
                 <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#0A213D]/50 uppercase [writing-mode:vertical-rl] rotate-180 select-none">
-                  WEB DEV SUITE
+                  PENGEMBANGAN WEB
                 </span>
               </div>
 
@@ -345,18 +344,18 @@ export default function WebsiteDetail() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-4 border-b border-neutral-200">
             <div>
               <span className="text-xs font-mono uppercase tracking-wider text-[#FFB800] font-bold block mb-1">
-                Featured Client Works
+                Karya Unggulan Klien
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0A213D] tracking-tight">
-                Selected Website Projects
+                Proyek Website Pilihan
               </h2>
               <p className="text-sm text-neutral-600 mt-1 max-w-xl">
-                A selection of client website projects representing different industries and business needs.
+                Pilihan proyek website klien yang merepresentasikan berbagai sektor industri dan kebutuhan bisnis.
               </p>
             </div>
 
             <span className="text-xs font-mono text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full border border-neutral-200/60 shrink-0">
-              2 Featured Showcases
+              2 Proyek Unggulan
             </span>
           </div>
 
@@ -454,7 +453,7 @@ export default function WebsiteDetail() {
                           {project.category}
                         </span>
                         <span className="text-xs font-mono text-neutral-400">
-                          Production Website
+                          Website Produksi
                         </span>
                       </div>
 
@@ -469,7 +468,7 @@ export default function WebsiteDetail() {
                       {/* Feature Highlights */}
                       <div className="space-y-2 mb-6">
                         <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-wider block">
-                          Key Deliverables:
+                          Hasil &amp; Fitur Utama:
                         </span>
                         {project.highlights.map((hl, hIdx) => (
                           <div key={hIdx} className="flex items-start gap-2 text-xs text-neutral-700">
@@ -500,7 +499,7 @@ export default function WebsiteDetail() {
                         rel="noreferrer"
                         className="inline-flex items-center gap-2.5 bg-[#0A213D] text-white hover:bg-[#122e54] px-6 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md group"
                       >
-                        <span>Visit Website</span>
+                        <span>Kunjungi Website</span>
                         <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </a>
                     </div>
@@ -597,19 +596,19 @@ export default function WebsiteDetail() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-4 border-b border-neutral-200">
             <div>
               <span className="text-xs font-mono uppercase tracking-wider text-[#FFB800] font-bold block mb-1">
-                Historical Portfolio Directory
+                Direktori Portofolio Historis
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0A213D] tracking-tight">
-                More Websites, More Industries.
+                Lebih Banyak Website, Berbagai Sektor Industri.
               </h2>
               <p className="text-sm text-neutral-600 mt-1 max-w-xl">
-                Beyond the selected projects, I have contributed to website projects across a range of industries, primarily during 2024–2025.
+                Selain proyek unggulan, saya telah berkontribusi dalam perancangan dan pengembangan website di beragam sektor industri, terutama pada periode 2024–2025.
               </p>
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-xs font-mono font-bold text-[#0A213D] bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200">
-                58 Verified Records
+                58 Domain Terverifikasi
               </span>
               <span className="text-xs font-mono text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full border border-neutral-200/60 hidden sm:inline">
                 2024 – 2025
@@ -636,7 +635,7 @@ export default function WebsiteDetail() {
                   onClick={() => setSearchQuery('')}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-neutral-400 hover:text-neutral-700"
                 >
-                  Clear
+                  Hapus
                 </button>
               )}
             </div>
@@ -814,13 +813,13 @@ export default function WebsiteDetail() {
         <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-[#0A213D] text-white flex flex-col md:flex-row justify-between items-center gap-8 shadow-xl">
           <div className="max-w-xl">
             <span className="text-xs font-mono uppercase tracking-wider text-[#FFB800] font-bold">
-              Collaboration &amp; Digital Solutions
+              Kolaborasi &amp; Solusi Digital
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 mb-2">
-              Have a Project in Mind?
+              Punya Rencana Proyek?
             </h3>
             <p className="text-sm text-neutral-300 leading-relaxed">
-              I’m open to opportunities and collaborations where thoughtful design and practical digital solutions come together.
+              Saya terbuka untuk peluang kerja sama dan kolaborasi yang menggabungkan desain fungsional serta solusi digital yang solutif.
             </p>
             <div className="flex items-center gap-3 mt-3 text-xs text-neutral-300 font-mono flex-wrap">
               <span>dimdimcraft.id@gmail.com</span>

@@ -108,11 +108,11 @@ export default function SelectedWorks() {
             {/* Pill Tag*/}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 text-xs font-semibold tracking-wide uppercase mb-4 shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-neutral-500" />
-              <span>Projects &amp; Profile</span>
+              <span>Proyek &amp; Profil</span>
             </div>
 
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 leading-[1.1]">
-              About Me
+              Tentang Saya
             </h2>
           </div>
 
@@ -161,26 +161,26 @@ export default function SelectedWorks() {
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wider uppercase bg-[#FFB800]/15 text-[#0A213D] border border-[#FFB800]/40 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-[#FFB800]" />
-                      <span>About Me</span>
+                      <span>Tentang Saya</span>
                     </span>
                     <span className="text-xs text-neutral-400 font-mono">
-                      Visual &amp; Digital Designer
+                      Desainer Visual &amp; Digital
                     </span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-900 mb-3 leading-[1.15]">
-                    Hi, I&apos;m <span className="text-[#0A213D] relative inline-block underline decoration-[#FFB800] decoration-4 underline-offset-4">Aji</span>, and this is my creative universe.
+                    Halo, saya <span className="text-[#0A213D] relative inline-block underline decoration-[#FFB800] decoration-4 underline-offset-4">Aji</span>, dan ini adalah ruang eksplorasi kreatif saya.
                   </h3>
 
                   <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-6">
-                    I translate concepts into scale-accurate 3D event environments, memorable visual identities, and clean custom web experiences. My core toolkit includes:
+                    Saya menerjemahkan konsep menjadi tata ruang panggung 3D yang presisi terukur, identitas visual yang berkesan kuat, serta pengalaman web kustom yang rapi dan responsif. Rangkaian perangkat utama saya meliputi:
                   </p>
 
                   {/* Tools Showcase: Icon-only Grid with Hover Tooltips */}
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-3 max-w-md">
                       <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
-                        Tools &amp; Software
+                        Alat &amp; Perangkat Lunak
                       </span>
                     </div>
 
@@ -217,7 +217,7 @@ export default function SelectedWorks() {
                     href="https://www.instagram.com/dimasaji_ngrho/"
                     className="inline-flex items-center gap-2 bg-[#0A213D] text-white text-xs md:text-sm font-semibold px-5 py-3 rounded-full hover:bg-[#122e54] transition-colors shadow-sm"
                   >
-                    <span>Get in Touch</span>
+                    <span>Hubungi Saya</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -307,23 +307,23 @@ export default function SelectedWorks() {
                     )}
                     {activeCategory === 'Design' && (
                       <span className="text-xs text-neutral-400 font-mono">
-                        Event Posters &amp; Editorial Feeds
+                        Poster Acara &amp; Konten Editorial
                       </span>
                     )}
                     {activeCategory === 'Website' && (
                       <span className="text-xs text-neutral-400 font-mono">
-                        Client Websites &amp; 58 Project Archive
+                        Website Klien &amp; 58 Arsip Proyek
                       </span>
                     )}
                   </div>
 
                   <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4 leading-tight">
                     {activeCategory === '3D Layout'
-                      ? 'Creating 3D event spaces and visual experiences'
+                      ? 'Merancang Tata Ruang Panggung & Pengalaman Spasial 3D'
                       : activeCategory === 'Design'
-                        ? 'Crafting visual identities, event posters & editorial feeds'
+                        ? 'Merancang Identitas Visual, Poster Acara & Feed Editorial'
                         : activeCategory === 'Website'
-                          ? 'Websites Built for Real Businesses.'
+                          ? 'Website Berkinerja Tinggi untuk Kebutuhan Bisnis.'
                           : featuredProject.title}
                   </h3>
 
@@ -333,7 +333,7 @@ export default function SelectedWorks() {
                       : activeCategory === 'Design'
                         ? 'Koleksi desain komunikasi visual untuk event akbar kemanusiaan, konser amal, publikasi tabligh akbar, serta konten kreatif media sosial.'
                         : activeCategory === 'Website'
-                          ? 'Exploring my work across website development, digital presentation, and web design — from client websites to personal projects and interface concepts.'
+                          ? 'Mengeksplorasi karya pengembangan web, presentasi digital, dan perancangan UI — mulai dari situs web klien hingga proyek personal dan konsep antarmuka.'
                           : featuredProject.shortDescription}
                   </p>
 
@@ -346,7 +346,7 @@ export default function SelectedWorks() {
                             30+
                           </span>
                           <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/20 text-[#0A213D] border border-[#FFB800]/40">
-                            Portfolio
+                            Portofolio
                           </span>
                         </div>
                         <div>
@@ -367,7 +367,7 @@ export default function SelectedWorks() {
                             100+
                           </span>
                           <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/20 text-[#0A213D] border border-[#FFB800]/40">
-                            Portfolio
+                            Portofolio
                           </span>
                         </div>
                         <div>
@@ -388,12 +388,12 @@ export default function SelectedWorks() {
                             50+
                           </span>
                           <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/20 text-[#0A213D] border border-[#FFB800]/40">
-                            Archive
+                            Arsip
                           </span>
                         </div>
                         <div>
                           <h4 className="text-sm font-bold text-neutral-900 mb-1 leading-snug">
-                            Website Projects &amp; Historical Archive
+                            Proyek Website &amp; Direktori Arsip Historis
                           </h4>
                           <p className="text-xs text-neutral-600 leading-relaxed">
                             Koleksi pengembangan website bisnis, properti, kontraktor, dan digital catalog berbasis WordPress &amp; Elementor.
@@ -460,13 +460,13 @@ export default function SelectedWorks() {
                           ? 'Lihat Portofolio Desain'
                           : activeCategory === 'Website'
                             ? 'Lihat Portofolio Website'
-                            : 'Explore Case Study'}
+                            : 'Lihat Studi Kasus'}
                     </span>
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
                   {activeCategory !== '3D Layout' && activeCategory !== 'Design' && activeCategory !== 'Website' && (
                     <span className="text-xs text-neutral-500 font-mono px-3 py-2">
-                      Role: {featuredProject.role}
+                      Peran: {featuredProject.role}
                     </span>
                   )}
                 </div>
@@ -697,9 +697,9 @@ export default function SelectedWorks() {
                           </h4>
                           <p className="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
                             {activeWebsitePreviewIndex === 0
-                              ? 'A business website project in the furniture sector.'
+                              ? 'Proyek website bisnis di sektor furnitur dan interior kustom.'
                               : activeWebsitePreviewIndex === 1
-                                ? 'A property-focused website project for apartment information and presentation.'
+                                ? 'Proyek website properti untuk presentasi dan pemasaran unit apartemen.'
                                 : 'Beyond selected projects: 58 domain arsip historis periode 2024–2025.'}
                           </p>
                         </div>
@@ -707,7 +707,7 @@ export default function SelectedWorks() {
                         {/* Bottom Bar */}
                         <div className="flex items-center justify-between text-xs pt-4 border-t border-white/10 relative z-10">
                           <span className="text-[11px] font-mono text-neutral-400">
-                            {activeWebsitePreviewIndex === 2 ? '58 Records Verified' : 'WordPress & Elementor'}
+                            {activeWebsitePreviewIndex === 2 ? '58 Domain Terverifikasi' : 'WordPress & Elementor'}
                           </span>
                           <Link
                             to="/work/website-portfolio"
@@ -734,8 +734,8 @@ export default function SelectedWorks() {
                     {/* Floating mini highlight cards on the right */}
                     <div className="absolute right-3 sm:right-4 top-14 bottom-4 flex flex-col justify-center gap-2 pointer-events-none z-10 max-w-[210px] sm:max-w-[230px]">
                       {[
-                        { index: 0, title: 'Cabin Furniture', subtitle: 'Furniture & Catalog Web' },
-                        { index: 1, title: 'Branz Mega Kuningan', subtitle: 'Luxury Property Showcase' },
+                        { index: 0, title: 'Cabin Furniture', subtitle: 'Katalog Web & Furnitur' },
+                        { index: 1, title: 'Branz Mega Kuningan', subtitle: 'Showcase Properti Mewah' },
                         { index: 2, title: '58 Web Archive', subtitle: '8 Industri (2024–2025)' }
                       ].map((hl, idx) => (
                         <button
@@ -781,7 +781,7 @@ export default function SelectedWorks() {
                     {/* Floating pill badge top left */}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/60 shadow-sm flex items-center gap-1.5 text-xs font-semibold text-neutral-900">
                       <Maximize2 className="w-3.5 h-3.5 text-neutral-700" />
-                      <span>Interactive Visual</span>
+                      <span>Visual Interaktif</span>
                     </div>
 
                     {/* FLOATING MINI CARDS */}

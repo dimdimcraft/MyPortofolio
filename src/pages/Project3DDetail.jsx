@@ -238,7 +238,7 @@ export default function Project3DDetail() {
               {/* ====================================================== */}
               <div className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-4">
                 <span className="text-xs sm:text-sm font-semibold tracking-wider text-[#0A213D]/70 uppercase font-sans mb-3">
-                  3D Spatial &amp; Event Showcase
+                  Eksplorasi Tata Ruang 3D &amp; Panggung Event
                 </span>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0A213D] uppercase leading-[1.05] mb-5">
@@ -316,7 +316,7 @@ export default function Project3DDetail() {
                     </div>
                     <div>
                       <p className="text-xs font-black text-[#0A213D] leading-tight">SketchUp</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">1:1 Modeling</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Pemodelan Skala 1:1</span>
                     </div>
                   </motion.div>
 
@@ -335,7 +335,7 @@ export default function Project3DDetail() {
                         <span className="text-[9px] font-mono font-bold uppercase text-amber-700">Real-Time</span>
                       </div>
                       <p className="text-xs sm:text-sm font-black text-[#0A213D] leading-tight">Enscape 3D</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Photoreal Render</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Render Fotorealistis</span>
                     </div>
                   </motion.div>
 
@@ -350,7 +350,7 @@ export default function Project3DDetail() {
                     </div>
                     <div>
                       <p className="text-xs font-black text-[#0A213D] leading-tight">Blender</p>
-                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Lighting &amp; Staging</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Pencahayaan &amp; Panggung</span>
                     </div>
                   </motion.div>
 
@@ -372,7 +372,7 @@ export default function Project3DDetail() {
 
                 {/* Vertical Text Label */}
                 <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#0A213D]/50 uppercase [writing-mode:vertical-rl] rotate-180 select-none">
-                  CORE 3D SUITE
+                  PERANGKAT 3D UTAMA
                 </span>
               </div>
 
@@ -525,12 +525,12 @@ export default function Project3DDetail() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Building2 className="w-3.5 h-3.5 text-neutral-400" />
-                    <span className="text-neutral-500">Venue:</span>
+                    <span className="text-neutral-500">Tipe Venue:</span>
                     <span className="font-semibold text-neutral-800">{project.venueType}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Box className="w-3.5 h-3.5 text-[#FFB800]" />
-                    <span className="text-neutral-500">Tools:</span>
+                    <span className="text-neutral-500">Perangkat:</span>
                     <span className="font-semibold text-neutral-800">{project.tools.join(' • ')}</span>
                   </div>
                 </div>
@@ -568,7 +568,7 @@ export default function Project3DDetail() {
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold flex items-center gap-1.5">
                     <Eye className="w-3.5 h-3.5 text-neutral-500" />
-                    <span>Visual Renders ({project.images.length} Sudut Pandang)</span>
+                    <span>Render Visual ({project.images.length} Sudut Pandang)</span>
                   </span>
                   <span className="text-[11px] text-neutral-400 italic">
                     Klik gambar untuk memperbesar (Full Lightbox)
@@ -602,7 +602,7 @@ export default function Project3DDetail() {
 
                       {/* Angle Badge */}
                       <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-mono text-white/90 group-hover:opacity-0 transition-opacity">
-                        View 0{imgIdx + 1}
+                        Sudut 0{imgIdx + 1}
                       </div>
                     </div>
                   ))}
@@ -732,7 +732,7 @@ export default function Project3DDetail() {
           </p>
           <div className="flex gap-4">
             <Link to="/" className="hover:text-[#FFB800] transition-colors">Beranda</Link>
-            <Link to="/#about" className="hover:text-[#FFB800] transition-colors">About &amp; Works</Link>
+            <Link to="/#about" className="hover:text-[#FFB800] transition-colors">Tentang &amp; Portofolio</Link>
             <Link to="/#contact" className="hover:text-[#FFB800] transition-colors">Kontak</Link>
           </div>
         </div>

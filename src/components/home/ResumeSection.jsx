@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Briefcase,
-  GraduationCap,
   Award,
   MapPin,
   Mail,
@@ -32,7 +31,7 @@ function LinkedInIcon({ className = "w-4 h-4" }) {
 }
 
 export default function ResumeSection() {
-  const [activeTab, setActiveTab] = useState('all') // 'all', 'experience', 'education', 'certifications'
+  const [activeTab, setActiveTab] = useState('all') // 'all', 'experience', 'certifications'
   const [copiedEmail, setCopiedEmail] = useState(false)
 
   const handleCopyEmail = () => {
@@ -45,123 +44,97 @@ export default function ResumeSection() {
   const workExperiences = [
     {
       id: 'qupro-designer',
-      role: 'Designer',
+      role: 'Desainer Grafis & 3D',
       company: 'Qupro Indonesia',
       location: 'Jakarta, Indonesia',
-      period: 'Feb 2025 – Present',
+      period: 'Feb 2025 – Sekarang',
       current: true,
       category: 'work',
       icon: Palette,
       badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
       bullets: [
-        'Designed and produced diverse digital creative assets, including social media feeds, digital posters, and stories, ensuring all visuals aligned with brand identity and engagement goals.',
-        'Developed detailed 3D layout models for events, providing comprehensive spatial visualizations to assist in planning and conceptualizing event setups.',
-        'Collaborated with the creative team to translate project briefs into high-quality designs, meeting tight deadlines while maintaining attention to detail and aesthetic standards.'
+        'Merancang dan memproduksi berbagai aset kreatif digital, termasuk feed media sosial, poster publikasi, dan materi visual acara yang selaras dengan identitas merek.',
+        'Mengembangkan model tata ruang 3D terperinci untuk panggung dan venue acara guna memberikan visualisasi spasial presisi dalam perencanaan tata letak.',
+        'Berkolaborasi aktif dengan tim kreatif untuk menerjemahkan brief proyek menjadi desain berkualitas tinggi dengan ketelitian detail dan standar estetika terbaik.'
       ],
       skills: ['3D Event Layout', 'Key Visuals', 'Social Media Feeds', 'Spatial Visualization', 'Canva Pro', 'Inkscape']
     },
     {
       id: 'dewarangga-wp',
-      role: 'Freelance WordPress Developer',
+      role: 'Pengembang WordPress Lepas (Freelance)',
       company: 'Dewarangga',
       location: 'Jakarta, Indonesia',
-      period: 'Sep 2024 – Aug 2025',
+      period: 'Sep 2024 – Agu 2025',
       current: false,
       category: 'work',
       icon: Code2,
       badgeColor: 'bg-blue-100 text-blue-900 border-blue-200',
       bullets: [
-        'Developed and maintained WordPress websites according to customer requirements, ensuring responsive design and optimal performance.',
-        'Collaborated with clients to understand specifications, design preferences, and desired features, implementing them through plugins and theme customization.',
-        'Provided regular site maintenance and content updates while ensuring functionality met SEO standards.'
+        'Mengembangkan dan mengelola situs web berbasis WordPress sesuai spesifikasi klien, memastikan tata letak responsif serta performa optimal.',
+        'Berkolaborasi dengan klien untuk memahami kebutuhan fitur dan preferensi desain, lalu mengimplementasikannya melalui integrasi plugin dan kustomisasi tema.',
+        'Melakukan pemeliharaan berkala, pembaruan konten, dan pengoptimalan fungsi website agar senantiasa memenuhi standar praktik terbaik SEO.'
       ],
       skills: ['WordPress', 'Elementor', 'Theme Customization', 'Responsive Web', 'SEO Standards', 'Site Maintenance']
     },
     {
       id: 'rumahweb-support',
-      role: 'Technical Support',
+      role: 'Dukungan Teknis (Technical Support)',
       company: 'Rumahweb Indonesia',
       location: 'Jakarta, Indonesia',
-      period: 'Mar 2024 – Aug 2024',
+      period: 'Mar 2024 – Agu 2024',
       current: false,
       category: 'work',
       icon: Building2,
       badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
       bullets: [
-        'Documenting problems and solutions for new cases as material for discussion and learning for the technical support team.',
-        'Providing technical support to customers experiencing difficulties with Rumahweb services through live chat, email, and phone channels.'
+        'Mendokumentasikan kendala teknis dan solusi penanganannya untuk kasus-kasus baru sebagai materi pembelajaran dan panduan tim technical support.',
+        'Memberikan bantuan teknis bagi pelanggan terkait pengelolaan hosting, domain, dan server Rumahweb melalui saluran live chat, tiket, email, dan telepon.'
       ],
       skills: ['Web Hosting Support', 'Troubleshooting', 'Technical Documentation', 'Customer Communication', 'DNS & Servers']
     },
     {
       id: 'beewhite-teacher',
-      role: 'Extracurricular Teacher Public Speaking',
+      role: 'Instruktur Ekstrakurikuler Public Speaking',
       company: 'Beewhite Management',
       location: 'Jakarta, Indonesia',
-      period: 'Aug 2023 – Sep 2023',
+      period: 'Agu 2023 – Sep 2023',
       current: false,
       category: 'work',
       icon: Briefcase,
       badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
       bullets: [
-        'Providing materials to students on how to build the courage to speak in public.',
-        'Delivering materials on the proper ways to speak effectively, including body language, facial expressions, and other aspects.',
-        'Monitoring the weekly progress of students in their public speaking skills.'
+        'Menyampaikan materi pelatihan untuk membangun rasa percaya diri dan keberanian siswa dalam berbicara di depan umum.',
+        'Memberikan pelatihan teknik komunikasi efektif, olah vokal, bahasa tubuh, ekspresi wajah, serta penyampaian presentasi yang menarik.',
+        'Mengevaluasi dan memantau perkembangan kemampuan berbicara di depan umum siswa secara rutin setiap minggu.'
       ],
       skills: ['Public Speaking', 'Effective Communication', 'Mentoring & Coaching', 'Presentation Skills']
     }
   ]
 
-  // Education Data
-  const educationList = [
-    {
-      id: 'stt-nurul-fikri',
-      degree: 'Bachelor’s Degree in Information Systems',
-      institution: 'STT Terpadu Nurul Fikri',
-      location: 'Jakarta, Indonesia',
-      period: '2022 – 2026',
-      current: false,
-      category: 'education',
-      desc: 'Fokus pada pengembangan aplikasi web, arsitektur sistem informasi, manajemen basis data, pemodelan data & business intelligence, serta integrasi teknologi visual modern.',
-      highlights: ['Data Analytics & Database', 'Web Development', 'Business Intelligence', 'UI/UX & Systems Architecture']
-    },
-    {
-      id: 'sman-01-bojonggede',
-      degree: 'High School Diploma',
-      institution: 'SMAN 01 Bojonggede',
-      location: 'Bogor, Indonesia',
-      period: '2018 – 2021',
-      current: false,
-      category: 'education',
-      desc: 'Fondasi akademik sains dan pengembangan minat awal dalam teknologi digital dan komunikasi publik.',
-      highlights: ['Academic Science', 'Public Communication', 'Organizational Activity']
-    }
-  ]
-
-  // Independent Study & Certifications
-  const independentStudies = [
+  // Certifications
+  const certifications = [
     {
       id: 'startup-campus-ds',
-      title: 'Studi Independen – Data Science: Greener Future with Data-Driven Solutions',
+      title: 'Sertifikasi – Data Science: Greener Future with Data-Driven Solutions',
       provider: 'Startup Campus',
       period: 'Kampus Merdeka Certified',
       category: 'certifications',
       bullets: [
-        'Completed an intensive Data Science training program focused on data-driven solutions for sustainability and the Green Economy.',
-        'Applied ESG (Environmental, Social, Governance) concepts in data analytics pipelines.',
-        'Earned three official certificates in participation, competency, and excellence, with privileged access to the Google Career Certificate.'
+        'Menyelesaikan program pelatihan intensif Data Science yang berfokus pada solusi analitik data untuk keberlanjutan dan Green Economy.',
+        'Menerapkan konsep ESG (Environmental, Social, Governance) dalam pemrosesan dan perancangan alur analitik data (data pipeline).',
+        'Meraih tiga sertifikat resmi untuk partisipasi, uji kompetensi, dan kelulusan terbaik, dengan akses khusus ke Google Career Certificate.'
       ],
       skills: ['Data Science', 'Python', 'ESG Analysis', 'Sustainability Metrics', 'Google Career Certificate']
     },
     {
       id: 'pt-nfci-fullstack',
-      title: 'Studi Independen – Fullstack Web Developer',
+      title: 'Sertifikasi – Fullstack Web Developer',
       provider: 'PT Nurul Fikri Cipta Inovasi',
       period: 'Kampus Merdeka Certified',
       category: 'certifications',
       bullets: [
-        'Developing web applications using HTML, CSS, Bootstrap, JavaScript, React JS, PHP, and Laravel, with database and REST API integration.',
-        'Applying SQL/MySQL/MariaDB, Git/GitHub, Agile/Kanban, UI/UX design, user requirements, and project documentation practices.'
+        'Mengembangkan aplikasi web modern menggunakan HTML, CSS, Bootstrap, JavaScript, React JS, PHP, dan Laravel dengan integrasi basis data serta REST API.',
+        'Menerapkan pengelolaan basis data SQL/MySQL/MariaDB, Git/GitHub, metodologi Agile/Kanban, desain UI/UX, dan penyusunan dokumentasi proyek teknis.'
       ],
       skills: ['React JS', 'Laravel & PHP', 'REST API', 'MySQL/MariaDB', 'Git/GitHub', 'Agile/Kanban', 'UI/UX']
     }
@@ -182,17 +155,16 @@ export default function ResumeSection() {
             Daftar Riwayat Hidup
           </h3>
           <p className="text-xs sm:text-sm text-neutral-600 mt-1.5 max-w-2xl leading-relaxed">
-            Rekam jejak profesional, pengalaman kerja, latar belakang pendidikan, serta program studi independen bersertifikasi.
+            Rekam jejak profesional, pengalaman kerja, serta program sertifikasi kompetensi.
           </p>
         </div>
 
         {/* Tab Filters */}
-        <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1.5 bg-neutral-100 rounded-2xl border border-neutral-200/80 overflow-x-auto max-w-full scrollbar-none shrink-0">
+        <div className="w-fit self-start inline-flex items-center gap-1 sm:gap-1.5 p-1.5 bg-neutral-100 rounded-2xl border border-neutral-200/80 overflow-x-auto max-w-full scrollbar-none shrink-0">
           {[
             { id: 'all', label: 'Semua Riwayat', icon: Layers },
             { id: 'experience', label: 'Pengalaman Kerja', icon: Briefcase },
-            { id: 'education', label: 'Pendidikan', icon: GraduationCap },
-            { id: 'certifications', label: 'Studi Independen', icon: Award }
+            { id: 'certifications', label: 'Sertifikasi', icon: Award }
           ].map((tab) => {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
@@ -306,38 +278,14 @@ export default function ResumeSection() {
             {/* Professional Summary Paragraph */}
             <div className="mt-5 pt-4 border-t border-neutral-100">
               <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-bold block mb-1.5">
-                Executive Summary
+                Ringkasan Profesional
               </span>
               <p className="text-xs text-neutral-600 leading-relaxed text-justify">
                 Mahasiswa Sistem Informasi yang memadukan keahlian teknis dan kreativitas di bidang teknologi digital, data, dan desain. Berpengalaman dalam pengembangan web, analitik data, business intelligence, basis data, serta desain visual dan pemodelan 3D. Terbiasa memimpin proyek dari eksplorasi ide hingga eksekusi solusi visual siap pakai.
               </p>
             </div>
 
-            {/* Core Competencies Matrix */}
-            <div className="mt-5 pt-4 border-t border-neutral-100">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-bold block mb-2">
-                Core Domains
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  '3D Modeling',
-                  'Graphic Design',
-                  'Web Development',
-                  'WordPress & Elementor',
-                  'Data Analytics',
-                  'Business Intelligence',
-                  'Public Speaking',
-                  'Technical Support'
-                ].map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-700 border border-neutral-200/60"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -360,7 +308,7 @@ export default function ResumeSection() {
                     <Briefcase className="w-3.5 h-3.5" />
                   </div>
                   <h4 className="text-lg sm:text-xl font-bold text-[#0A213D] tracking-tight">
-                    Pengalaman Kerja (Work Experiences)
+                    Pengalaman Kerja
                   </h4>
                 </div>
                 <span className="text-xs font-mono text-neutral-500 font-medium">
@@ -389,7 +337,7 @@ export default function ResumeSection() {
                               </h5>
                               {exp.current && (
                                 <span className="text-[10px] font-mono uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                                  Current Role
+                                  Posisi Aktif
                                 </span>
                               )}
                             </div>
@@ -435,75 +383,7 @@ export default function ResumeSection() {
             </motion.div>
           )}
 
-          {/* 2. EDUCATIONAL BACKGROUND */}
-          {(activeTab === 'all' || activeTab === 'education') && (
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-4"
-            >
-              <div className="flex items-center justify-between pb-2 border-b border-neutral-200/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-[#0A213D] text-[#FFB800] flex items-center justify-center">
-                    <GraduationCap className="w-3.5 h-3.5" />
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-bold text-[#0A213D] tracking-tight">
-                    Latar Belakang Pendidikan (Educational Background)
-                  </h4>
-                </div>
-                <span className="text-xs font-mono text-neutral-500 font-medium">
-                  {educationList.length} Institusi
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {educationList.map((edu) => (
-                  <div
-                    key={edu.id}
-                    className="bg-white rounded-2xl border border-neutral-200/90 p-5 shadow-2xs hover:shadow-md transition-shadow flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
-                          {edu.period}
-                        </span>
-                        {edu.current && (
-                          <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                            Aktif
-                          </span>
-                        )}
-                      </div>
-
-                      <h5 className="text-base font-bold text-neutral-900 leading-snug">
-                        {edu.degree}
-                      </h5>
-                      <p className="text-xs font-semibold text-[#0A213D] mt-0.5">
-                        {edu.institution} <span className="text-neutral-400 font-normal">({edu.location})</span>
-                      </p>
-
-                      <p className="text-xs text-neutral-600 leading-relaxed mt-2.5">
-                        {edu.desc}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-neutral-100">
-                      {edu.highlights.map((hl, hIdx) => (
-                        <span
-                          key={hIdx}
-                          className="text-[10px] font-medium px-2 py-0.5 rounded bg-neutral-100 text-neutral-700"
-                        >
-                          {hl}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* 3. INDEPENDENT STUDY & CERTIFICATIONS */}
+          {/* 2. CERTIFICATIONS */}
           {(activeTab === 'all' || activeTab === 'certifications') && (
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -517,16 +397,16 @@ export default function ResumeSection() {
                     <Award className="w-3.5 h-3.5" />
                   </div>
                   <h4 className="text-lg sm:text-xl font-bold text-[#0A213D] tracking-tight">
-                    Studi Independen &amp; Sertifikasi (Other Experience)
+                    Sertifikasi &amp; Pelatihan
                   </h4>
                 </div>
                 <span className="text-xs font-mono text-neutral-500 font-medium">
-                  {independentStudies.length} Program
+                  {certifications.length} Program
                 </span>
               </div>
 
               <div className="space-y-4">
-                {independentStudies.map((study) => (
+                {certifications.map((study) => (
                   <div
                     key={study.id}
                     className="bg-white rounded-2xl border border-neutral-200/90 p-5 sm:p-6 shadow-2xs hover:shadow-md transition-shadow"

@@ -3,13 +3,13 @@ import { Sparkle } from 'lucide-react'
 
 export default function MarqueeBanner() {
   const items = [
-    '3D Event Visualization',
-    'Event Visual Design',
-    'Spatial & Stage Layout',
-    'Graphic & Social Media Design',
-    'SketchUp & Enscape Rendering',
-    'WordPress Development',
-    'Event Booth & Venue Concepts',
+    'Visualisasi Event 3D',
+    'Desain Visual Acara',
+    'Tata Ruang & Panggung',
+    'Desain Grafis & Media Sosial',
+    'Rendering SketchUp & Enscape',
+    'Pengembangan Web WordPress',
+    'Konsep Booth & Venue Acara',
   ]
 
   return (

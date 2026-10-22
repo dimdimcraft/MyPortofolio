@@ -25,7 +25,7 @@ import { designCategoriesData } from '../data/projectsDesign'
 import { cn } from '../utils/cn'
 import canvaIcon from '../assets/tools/canva.svg'
 import inkscapeIcon from '../assets/tools/inkscape.svg'
-import affinityIcon from '../assets/tools/affinity.svg'
+import affinityIcon from '../assets/tools/affinity.png'
 
 export default function ProjectDesignDetail() {
   const [activeTab, setActiveTab] = useState('all') // 'all', 'event-promotional', 'social-media-editorial'
@@ -97,139 +97,190 @@ export default function ProjectDesignDetail() {
         </div>
 
         {/* ========================================================== */}
-        {/* HERO SECTION: SLEEK EDITORIAL BANNER FOR DESIGN PORTFOLIO */}
+        {/* HERO SECTION: SLEEK EDITORIAL BANNER (MATCHING 3D LAYOUT) */}
         {/* ========================================================== */}
-        <div className="relative mb-14 rounded-3xl overflow-hidden bg-gradient-to-br from-[#0A213D] via-[#102B4E] to-[#0A213D] text-white p-8 md:p-12 lg:p-14 shadow-2xl border border-neutral-800">
-          {/* Subtle Ambient Background Gradients */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB800]/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative mb-12">
+          {/* Decorative Corner Sunbursts (Top-Left & Bottom-Left) */}
+          <div className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12 w-28 h-28 sm:w-36 sm:h-36 pointer-events-none z-0">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-[#0A213D]/25" fill="none">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <line
+                  key={i}
+                  x1="50"
+                  y1="50"
+                  x2={50 + 48 * Math.cos((i * 10 * Math.PI) / 180)}
+                  y2={50 + 48 * Math.sin((i * 10 * Math.PI) / 180)}
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
+                />
+              ))}
+              <circle cx="50" cy="50" r="14" fill="#0A213D" fillOpacity="0.06" />
+            </svg>
+          </div>
 
-          {/* Micro Grid Pattern Overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-              backgroundSize: '24px 24px'
-            }}
-          />
+          <div className="absolute -bottom-8 -left-4 sm:-bottom-10 sm:-left-8 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-0">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-[#0A213D]/20" fill="none">
+              {Array.from({ length: 32 }).map((_, i) => (
+                <line
+                  key={i}
+                  x1="50"
+                  y1="50"
+                  x2={50 + 46 * Math.cos((i * 11.25 * Math.PI) / 180)}
+                  y2={50 + 46 * Math.sin((i * 11.25 * Math.PI) / 180)}
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
+                />
+              ))}
+              <circle cx="50" cy="50" r="12" fill="#0A213D" fillOpacity="0.05" />
+            </svg>
+          </div>
 
-          <div className="relative z-10">
-            {/* Top Category Badge */}
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFB800] text-[#0A213D] shadow-sm">
-                <Palette className="w-3.5 h-3.5" />
-                <span>Graphic Design Disciplines</span>
-              </span>
-              <span className="text-xs font-mono text-neutral-300">
-                3 Bidang Utama: Event &amp; Promotion • Social Media • Gate &amp; Entrance
-              </span>
-            </div>
+          {/* Main Card Container with Soft Ice-Blue Gradient */}
+          <div className="relative z-10 bg-gradient-to-br from-[#EAF0F6] via-[#F4F8FA] to-[#E3ECF3] rounded-3xl md:rounded-[2.5rem] border border-white/80 shadow-xl shadow-slate-900/5 p-6 sm:p-10 lg:p-12 overflow-hidden">
+            {/* Subtle card surface lighting */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB800]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Main Editorial Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+              
+              {/* ====================================================== */}
+              {/* LEFT COLUMN: TITLE & INTRO                             */}
+              {/* ====================================================== */}
+              <div className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-4">
+                <span className="text-xs sm:text-sm font-semibold tracking-wider text-[#0A213D]/70 uppercase font-sans mb-3">
+                  Desain Grafis &amp; Media Digital
+                </span>
 
-              {/* Left Column: Heading, Subtitle & Metadata Stats */}
-              <div className="lg:col-span-7">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black tracking-tight leading-[1.12] mb-5 text-white">
-                  Visual Design Across Event Staging &amp; Digital Media
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0A213D] uppercase leading-[1.05] mb-5">
+                  VISUAL<br />
+                  <span className="text-[#0A213D] relative inline-block underline decoration-[#FFB800] decoration-4 underline-offset-8">
+                    DESIGN.
+                  </span>
                 </h1>
 
-                <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-2xl mb-8">
-                  Menampilkan portofolio desain visual terpadu: perancangan materi publikasi
-                  acara skala besar (*Event &amp; Promotional Design*), konten kampanye digital
-                  (*Social Media &amp; Editorial Design*), gerbang penyambutan &amp; gantry maraton (*Event Gate &amp; Entrance Design*), serta seni poster sinematik &amp; eksperimen kreatif (*Poster Art &amp; Creative Experiments*).
+                <p className="text-sm sm:text-base text-neutral-600 max-w-md leading-relaxed mb-8 font-normal">
+                  Koleksi karya desain grafis terpadu: perancangan publikasi acara skala besar, konten media sosial &amp; editorial, gerbang gantry event, hingga seni poster sinematik siap cetak.
                 </p>
 
-                {/* 4 Feature Stats in Compact Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3 text-center">
-                    <div className="text-xl sm:text-2xl font-black text-[#FFB800]">
-                      {designCategoriesData.length} Bidang
-                    </div>
-                    <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-wider mt-0.5">Kategori Utama</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3 text-center">
-                    <div className="text-xl sm:text-2xl font-black text-white">
-                      {designCategoriesData.reduce((acc, cat) => acc + cat.items.length, 0)} Karya
-                    </div>
-                    <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-wider mt-0.5">Aset Foto Pilihan</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3 text-center">
-                    <div className="text-xl sm:text-2xl font-black text-[#FFB800]">Print, Arch &amp; Feed</div>
-                    <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-wider mt-0.5">Format Fleksibel</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3 text-center">
-                    <div className="text-xl sm:text-2xl font-black text-white">Multi Tools</div>
-                    <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-wider mt-0.5">Canva • Inkscape</div>
-                  </div>
+                {/* Stylish Pill Button (Matching 3D Layout) */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <a
+                    href="#category-selector"
+                    className="inline-flex items-center gap-3 bg-[#0A213D] text-white pl-2.5 pr-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase hover:bg-[#122e54] transition-all shadow-lg shadow-[#0A213D]/25 group"
+                  >
+                    <span className="w-7 h-7 rounded-full bg-[#FFB800] text-[#0A213D] flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+                      <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </span>
+                    <span>Jelajahi Proyek</span>
+                  </a>
+
+                  <Link
+                    to="/"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-[#0A213D] hover:text-[#FFB800] transition-colors"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Ke Beranda</span>
+                  </Link>
                 </div>
               </div>
 
-              {/* Right Column: Hero Visual Showcase */}
-              <div className="lg:col-span-4 relative flex items-center justify-center pt-6 pb-2">
-                <div className="relative w-full max-w-[340px]">
+              {/* ====================================================== */}
+              {/* CENTER-RIGHT: VERTICAL CARD & FLYING DESIGN TOOLS      */}
+              {/* ====================================================== */}
+              <div className="lg:col-span-5 relative flex justify-center items-center py-6 sm:py-8 lg:py-4">
+                <div className="relative w-full max-w-[320px] sm:max-w-[350px] flex justify-center items-center min-h-[340px] sm:min-h-[380px]">
+                  
+                  {/* The Vertical Deep Navy Pillar */}
+                  <div className="w-48 sm:w-56 h-[320px] sm:h-[360px] bg-[#0A213D] rounded-3xl sm:rounded-[2rem] shadow-2xl shadow-[#0A213D]/30 border border-blue-900/40 relative flex flex-col justify-between items-center p-5 overflow-hidden">
+                    {/* Subtle Top Label inside pillar */}
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FFB800] font-bold">
+                      Workflow Design
+                    </span>
 
-                  {/* Floating Tool Badge 1: Inkscape (Top Left) */}
+                    {/* Subtle Isometric Grid lines inside pillar */}
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
+                    {/* Bottom Dots Indicator */}
+                    <div className="flex items-center gap-1.5 z-10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                    </div>
+                  </div>
+
+                  {/* 3 FLYING TOOLS OVERLAPPING THE PILLAR */}
+                  {/* Tool 1: Inkscape (Flying Top-Left) */}
                   <motion.div
-                    animate={{ y: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 4.8, ease: 'easeInOut', delay: 0.3 }}
-                    className="absolute -top-4 -left-3 sm:-left-5 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white shadow-xl shadow-black/20 flex items-center gap-2.5 select-none"
+                    animate={{ y: [0, -10, 0], rotate: [-2, 2, -2] }}
+                    transition={{ repeat: Infinity, duration: 4.8, ease: 'easeInOut' }}
+                    className="absolute -top-3 -left-4 sm:-left-8 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white shadow-xl shadow-slate-900/15 flex items-center gap-3 cursor-default hover:scale-105 transition-transform"
                   >
-                    <div className="w-7 h-7 rounded-xl bg-neutral-100 flex items-center justify-center p-1.5 border border-neutral-200 shadow-2xs">
+                    <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center p-1.5 shrink-0 border border-neutral-200">
                       <img src={inkscapeIcon} alt="Inkscape" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <p className="text-xs font-black text-[#0A213D] leading-tight">Inkscape</p>
-                      <span className="text-[9px] font-mono font-semibold text-neutral-500 block leading-tight">Vector &amp; Print</span>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Vektor &amp; Cetak</span>
                     </div>
                   </motion.div>
 
-                  {/* Floating Tool Badge 2: Canva (Top Right) */}
+                  {/* Tool 2: Canva Pro (Flying Prominent Center-Right) */}
                   <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ repeat: Infinity, duration: 4.2, ease: 'easeInOut' }}
-                    className="absolute -top-4 -right-3 sm:-right-5 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white shadow-xl shadow-black/20 flex items-center gap-2.5 select-none"
+                    animate={{ y: [0, 12, 0], rotate: [2, -2, 2] }}
+                    transition={{ repeat: Infinity, duration: 5.4, ease: 'easeInOut', delay: 0.3 }}
+                    className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-8 z-30 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border-2 border-[#FFB800] shadow-2xl shadow-amber-500/20 flex items-center gap-3.5 cursor-default hover:scale-105 transition-transform"
                   >
-                    <div className="w-7 h-7 rounded-xl bg-teal-50 flex items-center justify-center p-1.5 border border-teal-100 shadow-2xs">
-                      <img src={canvaIcon} alt="Canva" className="w-full h-full object-contain" />
+                    <div className="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center p-2 shrink-0 border border-teal-200">
+                      <img src={canvaIcon} alt="Canva Pro" className="w-full h-full object-contain" />
                     </div>
                     <div>
-                      <p className="text-xs font-black text-[#0A213D] leading-tight">Canva Pro</p>
-                      <span className="text-[9px] font-mono font-semibold text-neutral-500 block leading-tight">Layout Design</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[9px] font-mono font-bold uppercase text-amber-700">Real-Time</span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-black text-[#0A213D] leading-tight">Canva Pro</p>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Tata Letak &amp; Desain</span>
                     </div>
                   </motion.div>
 
-                  {/* The Image Card itself with overflow-hidden */}
-                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-neutral-900 group">
-                    <img
-                      src={designCategoriesData[0]?.items[0]?.image}
-                      alt="Featured Design"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <span className="text-[10px] font-mono uppercase bg-[#FFB800] text-[#0A213D] px-2 py-0.5 rounded font-bold">
-                        Kategori Pilihan
-                      </span>
-                      <p className="text-sm font-bold mt-1 line-clamp-1">{designCategoriesData[0]?.title}</p>
-                      <p className="text-[11px] text-neutral-300">{designCategoriesData[0]?.items?.length || 6} Materi Desain Siap Cetak &amp; Publikasi</p>
+                  {/* Tool 3: Affinity (Flying Bottom-Left) */}
+                  <motion.div
+                    animate={{ y: [0, -8, 0], rotate: [-3, 1, -3] }}
+                    transition={{ repeat: Infinity, duration: 5.1, ease: 'easeInOut', delay: 0.6 }}
+                    className="absolute -bottom-3 -left-2 sm:-left-6 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white shadow-xl shadow-slate-900/15 flex items-center gap-3 cursor-default hover:scale-105 transition-transform"
+                  >
+                    <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center shrink-0 border border-neutral-200 shadow-2xs">
+                      <img src={affinityIcon} alt="Affinity" className="w-full h-full object-cover rounded-lg" />
                     </div>
-                  </div>
+                    <div>
+                      <p className="text-xs font-black text-[#0A213D] leading-tight">Affinity</p>
+                      <span className="text-[10px] font-semibold text-neutral-500 block leading-tight">Aset Kreatif</span>
+                    </div>
+                  </motion.div>
 
                 </div>
               </div>
 
-              {/* Far Right Vertical Bar */}
-              <div className="lg:col-span-1 hidden lg:flex flex-col items-center justify-center gap-5 py-2 border-l border-white/10 pl-4">
+              {/* ====================================================== */}
+              {/* FAR RIGHT: VERTICAL "TOOLS PALETTE" BAR                */}
+              {/* ====================================================== */}
+              <div className="lg:col-span-1 hidden lg:flex flex-col items-center justify-center gap-5 py-2 border-l border-[#0A213D]/10 pl-4">
+                {/* 5 Color Dots (Matching Palette & Tools) */}
                 <div className="flex flex-col items-center gap-2.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFB800] ring-2 ring-[#FFB800]/40" title="Amber Accent" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-rose-500/40" title="Editorial Rose" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-400/40" title="Emerald Fresh" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500 ring-2 ring-blue-500/40" title="Qupro Blue" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-white ring-2 ring-white/40" title="Clean White" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFB800] ring-2 ring-[#FFB800]/40 shadow-xs" title="Amber Accent" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0A213D] ring-2 ring-[#0A213D]/30 shadow-xs" title="Deep Navy" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-rose-500/30 shadow-xs" title="Editorial Rose" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00C4CC] ring-2 ring-teal-400/30 shadow-xs" title="Canva Teal" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white ring-2 ring-neutral-300 shadow-xs" title="Clean White" />
                 </div>
-                <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-white/50 uppercase [writing-mode:vertical-rl] rotate-180 select-none">
-                  DESIGN SUITE
+
+                {/* Vertical Text Label */}
+                <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#0A213D]/50 uppercase [writing-mode:vertical-rl] rotate-180 select-none">
+                  PERANGKAT DESAIN
                 </span>
               </div>
 
@@ -333,7 +384,7 @@ export default function ProjectDesignDetail() {
 
                 {/* Deliverables Pills */}
                 <div className="mt-6 pt-5 border-t border-neutral-100/80 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-mono text-neutral-400 font-medium mr-1">Scope &amp; Output:</span>
+                  <span className="text-xs font-mono text-neutral-400 font-medium mr-1">Ruang Lingkup &amp; Output:</span>
                   {category.deliverables.map((del, dIdx) => (
                     <span
                       key={dIdx}
@@ -543,7 +594,7 @@ export default function ProjectDesignDetail() {
 
       {/* Minimal Footer */}
       <footer className="border-t border-neutral-200 py-8 bg-[#0A213D] text-white text-center text-xs">
-        <p>&copy; {new Date().getFullYear()} Aji. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Aji. Hak cipta dilindungi.</p>
       </footer>
     </div>
   )
