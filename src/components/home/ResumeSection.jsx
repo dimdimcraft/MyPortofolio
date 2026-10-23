@@ -19,7 +19,7 @@ import {
   Clock,
   ChevronRight
 } from 'lucide-react'
-import mePhoto from '../../assets/ME.png'
+import mePhoto from '../../assets/ME.webp'
 import { cn } from '../../utils/cn'
 
 function LinkedInIcon({ className = "w-4 h-4" }) {
@@ -192,7 +192,7 @@ export default function ResumeSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
         {/* ======================================================== */}
-        {/* LEFT COLUMN: PROFILE CARD WITH ME.PNG & QUICK CONTACTS   */}
+        {/* LEFT COLUMN: PROFILE CARD WITH ME.WEBP & QUICK CONTACTS   */}
         {/* ======================================================== */}
         <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
           <div className="bg-white rounded-3xl border border-neutral-200/90 p-6 shadow-sm overflow-hidden relative group">

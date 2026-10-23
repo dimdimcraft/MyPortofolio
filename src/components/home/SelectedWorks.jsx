@@ -24,7 +24,7 @@ import blenderIcon from '../../assets/tools/blender.svg'
 import inkscapeIcon from '../../assets/tools/inkscape.svg'
 import antigravityIcon from '../../assets/tools/antigravity.svg'
 import wordpressIcon from '../../assets/tools/wordpress.svg'
-import mePortrait from '../../assets/me2.png'
+import mePortrait from '../../assets/me2.webp'
 
 const myTools = [
   { name: 'Canva', category: 'Design', icon: canvaIcon },
@@ -233,7 +233,7 @@ export default function SelectedWorks() {
                   <div className="absolute w-64 h-64 rounded-full bg-blue-500/15 blur-3xl -bottom-10 -right-10 pointer-events-none" />
                   <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-neutral-200/50 to-transparent pointer-events-none z-1" />
 
-                  {/* Aji's Portrait Image (me2.png) - Half-Body Zoom (Setengah Badan) */}
+                  {/* Aji's Portrait Image (me2.webp) - Half-Body Zoom (Setengah Badan) */}
                   <img
                     src={mePortrait}
                     alt="Aji - Visual & Digital Designer"

@@ -1,34 +1,34 @@
 // Data dan aset 6 Project 3D dari folder src/assets/3D
 
 // BALAIRUNG UI
-import balairung1 from '../assets/3D/BALAIRUNG UI/1.png'
-import balairung2 from '../assets/3D/BALAIRUNG UI/2.png'
-import balairung3 from '../assets/3D/BALAIRUNG UI/3.png'
+import balairung1 from '../assets/3D/BALAIRUNG UI/1.webp'
+import balairung2 from '../assets/3D/BALAIRUNG UI/2.webp'
+import balairung3 from '../assets/3D/BALAIRUNG UI/3.webp'
 
 // GBK BASKET HALL
-import gbk1 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-33-51.png'
-import gbk2 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-35-15.png'
-import gbk3 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-36-45.png'
+import gbk1 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-33-51.webp'
+import gbk2 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-35-15.webp'
+import gbk3 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-36-45.webp'
 
 // MAKO POLDA ACEH
-import polda1 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-20-45.png'
-import polda2 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-24-13.png'
-import polda3 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-25-48.png'
+import polda1 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-20-45.webp'
+import polda2 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-24-13.webp'
+import polda3 from '../assets/3D/MAKO POLDA ACEH/Enscape_2026-10-12-10-25-48.webp'
 
 // MONAS
-import monas1 from '../assets/3D/MONAS/Enscape_2026-10-12-10-54-39.png'
-import monas2 from '../assets/3D/MONAS/Enscape_2026-10-12-10-56-17.png'
-import monas3 from '../assets/3D/MONAS/Enscape_2026-10-12-10-56-48.png'
+import monas1 from '../assets/3D/MONAS/Enscape_2026-10-12-10-54-39.webp'
+import monas2 from '../assets/3D/MONAS/Enscape_2026-10-12-10-56-17.webp'
+import monas3 from '../assets/3D/MONAS/Enscape_2026-10-12-10-56-48.webp'
 
 // PADEPOKAN PENCAK SILAT TMII
-import silat1 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-48-09.png'
-import silat2 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-49-13.png'
-import silat3 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-50-22.png'
+import silat1 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-48-09.webp'
+import silat2 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-49-13.webp'
+import silat3 from '../assets/3D/PADEPOKAN PENCAK SILAT TMII/Enscape_2026-10-12-10-50-22.webp'
 
 // TAMAN BUKIT GELANGGANG
-import gelanggang1 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-42-10.png'
-import gelanggang2 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-43-16.png'
-import gelanggang3 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-43-59.png'
+import gelanggang1 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-42-10.webp'
+import gelanggang2 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-43-16.webp'
+import gelanggang3 from '../assets/3D/TAMAN BUKIT GELANGGANG/Enscape_2026-10-12-10-43-59.webp'
 
 export const projects3DData = [
   {

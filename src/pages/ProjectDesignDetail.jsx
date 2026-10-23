@@ -25,7 +25,7 @@ import { designCategoriesData } from '../data/projectsDesign'
 import { cn } from '../utils/cn'
 import canvaIcon from '../assets/tools/canva.svg'
 import inkscapeIcon from '../assets/tools/inkscape.svg'
-import affinityIcon from '../assets/tools/affinity.png'
+import affinityIcon from '../assets/tools/affinity.webp'
 
 export default function ProjectDesignDetail() {
   const [activeTab, setActiveTab] = useState('all') // 'all', 'event-promotional', 'social-media-editorial'

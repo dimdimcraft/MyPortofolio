@@ -1,7 +1,7 @@
-import balairung1 from '../assets/3D/BALAIRUNG UI/1.png'
-import balairung2 from '../assets/3D/BALAIRUNG UI/2.png'
-import gbk1 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-33-51.png'
-import monas1 from '../assets/3D/MONAS/Enscape_2026-10-12-10-54-39.png'
+import balairung1 from '../assets/3D/BALAIRUNG UI/1.webp'
+import balairung2 from '../assets/3D/BALAIRUNG UI/2.webp'
+import gbk1 from '../assets/3D/GBK BASKET HALL/Enscape_2026-10-12-10-33-51.webp'
+import monas1 from '../assets/3D/MONAS/Enscape_2026-10-12-10-54-39.webp'
 
 // Sesuai rules.md Section 6, 7, 19, & 23 & Permintaan User: Kategori Design, 3D Layout, dan WordPress
 export const projectsData = [

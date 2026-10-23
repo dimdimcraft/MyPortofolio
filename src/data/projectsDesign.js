@@ -1,28 +1,28 @@
 // Data dan aset portofolio Design dari folder src/assets/DESIGN
 
 // 1. EVENT & PROMOTIONAL DESIGN
-import solmedPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR.png'
-import konserAmalPoster from '../assets/DESIGN/Event & Promotional Design/WhatsApp Image 2026-10-13 at 14.35.52.jpeg'
-import jaulahSyaikhPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (1).png'
-import tablighPalembangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (2).png'
-import uinPadangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (3).png'
-import wantedPoster from '../assets/DESIGN/Event & Promotional Design/PosterPemberitahuanEvent.png'
+import solmedPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR.webp'
+import konserAmalPoster from '../assets/DESIGN/Event & Promotional Design/WhatsApp Image 2026-10-13 at 14.35.52.webp'
+import jaulahSyaikhPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (1).webp'
+import tablighPalembangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (2).webp'
+import uinPadangPoster from '../assets/DESIGN/Event & Promotional Design/SAFARI DAKWAH & TABLIGH AKBAR (3).webp'
+import wantedPoster from '../assets/DESIGN/Event & Promotional Design/PosterPemberitahuanEvent.webp'
 
 // 2. SOCIAL MEDIA & EDITORIAL DESIGN
-import feedPalestina from '../assets/DESIGN/Social Media & Editorial Design/1.png'
-import feedApapunDemiKamu from '../assets/DESIGN/Social Media & Editorial Design/2.png'
-import feedImpactAnggaran from '../assets/DESIGN/Social Media & Editorial Design/3.png'
-import feedSportqu from '../assets/DESIGN/Social Media & Editorial Design/4.jpg'
-import feedAksiZakat from '../assets/DESIGN/Social Media & Editorial Design/5.png'
-import feedKebutuhanQupro from '../assets/DESIGN/Social Media & Editorial Design/6.jpeg'
+import feedPalestina from '../assets/DESIGN/Social Media & Editorial Design/1.webp'
+import feedApapunDemiKamu from '../assets/DESIGN/Social Media & Editorial Design/2.webp'
+import feedImpactAnggaran from '../assets/DESIGN/Social Media & Editorial Design/3.webp'
+import feedSportqu from '../assets/DESIGN/Social Media & Editorial Design/4.webp'
+import feedAksiZakat from '../assets/DESIGN/Social Media & Editorial Design/5.webp'
+import feedKebutuhanQupro from '../assets/DESIGN/Social Media & Editorial Design/6.webp'
 
 // 3. EVENT GATE & ENTRANCE DESIGN
-import gateHni from '../assets/DESIGN/Event Gate & Entrance Design/1.png'
-import gatePalestinaRun from '../assets/DESIGN/Event Gate & Entrance Design/2.png'
+import gateHni from '../assets/DESIGN/Event Gate & Entrance Design/1.webp'
+import gatePalestinaRun from '../assets/DESIGN/Event Gate & Entrance Design/2.webp'
 
 // 4. POSTER ART & CREATIVE EXPERIMENTS
-import posterAgakLaen from '../assets/DESIGN/Poster Art & Creative Experiments/POSTER AGAK LAEN 2.png'
-import posterTwilight from '../assets/DESIGN/Poster Art & Creative Experiments/TWILLIGHT.png'
+import posterAgakLaen from '../assets/DESIGN/Poster Art & Creative Experiments/POSTER AGAK LAEN 2.webp'
+import posterTwilight from '../assets/DESIGN/Poster Art & Creative Experiments/TWILLIGHT.webp'
 
 // Empat kategori utama sesuai struktur folder fisik di src/assets/DESIGN
 export const designCategoriesData = [

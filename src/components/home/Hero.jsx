@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Play, Sparkles } from 'lucide-react'
 
-import mePortrait from '../../assets/ME.png'
+import mePortrait from '../../assets/ME.webp'
 
 export default function Hero() {
   return (
