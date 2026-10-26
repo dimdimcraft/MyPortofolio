@@ -83,14 +83,14 @@ export default function SelectedWorks() {
   const getCategoryIcon = (category) => {
     switch (category) {
       case '3D Layout':
-        return <Box className="w-4 h-4" />
+        return <Box className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
       case 'Design':
-        return <Palette className="w-4 h-4" />
+        return <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
       case 'Website':
       case 'WordPress':
-        return <Globe className="w-4 h-4" />
+        return <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
       default:
-        return <Layers className="w-4 h-4" />
+        return <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
     }
   }
 
@@ -116,26 +116,28 @@ export default function SelectedWorks() {
             </h2>
           </div>
 
-          {/* Category Filter Pills*/}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 bg-neutral-100 rounded-full border border-neutral-200/80 w-fit">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={cn(
-                    'px-4 py-2 text-xs md:text-sm font-medium rounded-full transition-all duration-200 flex items-center gap-1.5 cursor-pointer',
-                    isActive
-                      ? 'bg-neutral-900 text-white shadow-sm'
-                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60'
-                  )}
-                >
-                  {getCategoryIcon(cat)}
-                  <span>{cat}</span>
-                </button>
-              )
-            })}
+          {/* Category Filter Pills (Sebaris & Responsif) */}
+          <div className="w-full md:w-auto overflow-x-auto scrollbar-none py-1 -my-1">
+            <div className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 p-1 md:p-1.5 bg-neutral-100 rounded-full border border-neutral-200/80 w-max max-w-none">
+              {categories.map((cat) => {
+                const isActive = activeCategory === cat
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={cn(
+                      'px-3 sm:px-3.5 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium rounded-full transition-all duration-200 flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0',
+                      isActive
+                        ? 'bg-neutral-900 text-white shadow-sm'
+                        : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60'
+                    )}
+                  >
+                    {getCategoryIcon(cat)}
+                    <span>{cat}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
 
