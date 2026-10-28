@@ -10,7 +10,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col justify-between bg-neutral-900 text-white rounded-3xl p-8 md:p-12 lg:p-16 border border-neutral-800 shadow-sm relative overflow-hidden"
+          className="flex flex-col justify-between bg-neutral-900 text-white rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 border border-neutral-800 shadow-sm relative overflow-hidden"
         >
           {/* Background glow effects */}
           <div className="absolute -right-20 -top-20 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-40 pointer-events-none" />
@@ -50,25 +50,29 @@ export default function Contact() {
 
             {/* Right: CTA */}
             <div className="flex flex-col justify-between gap-6">
-              <div className="bg-neutral-800/70 border border-neutral-700/70 rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Tersedia untuk proyek baru</p>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Siap Berkolaborasi
+              <div className="bg-neutral-800/70 border border-neutral-700/70 rounded-3xl p-5 sm:p-6 md:p-8 backdrop-blur-sm">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                  <p className="text-[11px] sm:text-xs text-neutral-400 uppercase tracking-wider font-semibold">
+                    Tersedia untuk proyek baru
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono whitespace-nowrap shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Siap Berkolaborasi</span>
                   </span>
                 </div>
 
-                <div className="space-y-1 mb-6">
+                <div className="space-y-1.5 mb-6">
                   <a
                     href="mailto:dimdimcraft.id@gmail.com"
-                    className="text-xl md:text-2xl font-bold text-white hover:text-[#FFB800] transition-colors block truncate"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-white hover:text-[#FFB800] transition-colors block tracking-tight"
                   >
                     dimdimcraft.id@gmail.com
                   </a>
-                  <p className="text-sm font-mono text-neutral-300">
-                    +62 819-5912-5564 • Bogor &amp; Jakarta, ID
-                  </p>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs sm:text-sm text-neutral-300">
+                    <span className="font-mono text-neutral-200">+62 819-5912-5564</span>
+                    <span className="text-neutral-500 hidden min-[360px]:inline">•</span>
+                    <span className="text-neutral-400">Bogor &amp; Jakarta, ID</span>
+                  </div>
                 </div>
 
                 {/* Primary Action Buttons */}
@@ -114,9 +118,9 @@ export default function Contact() {
                 </div>
               </div>
 
-              <p className="text-xs text-neutral-400 text-center lg:text-left flex items-center justify-center lg:justify-start gap-1.5 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Respons cepat via WhatsApp &amp; Email (maksimal 24 jam).
+              <p className="text-xs text-neutral-400 text-center lg:text-left flex items-center justify-center lg:justify-start gap-2 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                <span>Respons cepat via WhatsApp &amp; Email (maksimal 24 jam).</span>
               </p>
             </div>
           </div>

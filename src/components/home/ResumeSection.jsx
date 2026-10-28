@@ -160,7 +160,7 @@ export default function ResumeSection() {
         </div>
 
         {/* Tab Filters */}
-        <div className="w-fit self-start inline-flex items-center gap-1 sm:gap-1.5 p-1.5 bg-neutral-100 rounded-2xl border border-neutral-200/80 overflow-x-auto max-w-full scrollbar-none shrink-0">
+        <div className="w-fit self-start inline-flex items-center gap-1 sm:gap-1.5 p-1.5 bg-neutral-100 rounded-2xl border border-neutral-200/80 max-w-full shrink-0">
           {[
             { id: 'all', label: 'Semua Riwayat', icon: Layers },
             { id: 'experience', label: 'Pengalaman Kerja', icon: Briefcase },
@@ -173,15 +173,17 @@ export default function ResumeSection() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
+                title={tab.label}
+                aria-label={tab.label}
                 className={cn(
-                  'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer select-none whitespace-nowrap shrink-0',
+                  'px-3 py-2 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer select-none whitespace-nowrap shrink-0',
                   isActive
                     ? 'bg-[#0A213D] text-white shadow-sm ring-1 ring-[#0A213D]/20'
                     : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60'
                 )}
               >
-                <Icon className={cn('w-3.5 h-3.5', isActive ? 'text-[#FFB800]' : 'text-neutral-500')} />
-                <span>{tab.label}</span>
+                <Icon className={cn('w-4 h-4 sm:w-3.5 sm:h-3.5', isActive ? 'text-[#FFB800]' : 'text-neutral-500')} />
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             )
           })}
@@ -195,7 +197,7 @@ export default function ResumeSection() {
         {/* LEFT COLUMN: PROFILE CARD WITH ME.WEBP & QUICK CONTACTS   */}
         {/* ======================================================== */}
         <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
-          <div className="bg-white rounded-3xl border border-neutral-200/90 p-6 shadow-sm overflow-hidden relative group">
+          <div className="bg-white rounded-3xl border border-neutral-200/90 p-5 sm:p-6 shadow-sm overflow-hidden relative group">
             {/* Ambient Background Accent */}
             <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-amber-200/40 via-blue-100/20 to-transparent rounded-full blur-2xl -z-10 pointer-events-none" />
 
@@ -213,7 +215,7 @@ export default function ResumeSection() {
               <h4 className="text-xl sm:text-2xl font-black text-[#0A213D] mt-2 tracking-tight">
                 DIMAS AJI NUGROHO
               </h4>
-              <p className="text-xs font-semibold text-[#FFB800] bg-[#0A213D] px-3 py-1 rounded-full mt-1.5 inline-block">
+              <p className="text-[10px] min-[380px]:text-[11px] sm:text-xs font-semibold text-[#FFB800] bg-[#0A213D] px-2.5 sm:px-3 py-1 rounded-full mt-1.5 inline-block whitespace-nowrap tracking-tight">
                 Designer • 3D Spatial Visualizer • Web Developer
               </p>
             </div>

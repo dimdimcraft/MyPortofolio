@@ -627,19 +627,19 @@ export default function Project3DDetail() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href="https://wa.me/6281959125564"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-[#FFB800] text-[#0A213D] font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full hover:bg-white transition-all shadow-md"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#FFB800] text-[#0A213D] font-bold text-xs sm:text-sm px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full hover:bg-white transition-all shadow-md text-center whitespace-nowrap"
             >
               <span>Hubungi Saya</span>
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
             </a>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full hover:bg-white/20 transition-all border border-white/20"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-white/10 text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full hover:bg-white/20 transition-all border border-white/20 text-center whitespace-nowrap"
             >
               <span>Lihat Kategori Lain</span>
             </Link>

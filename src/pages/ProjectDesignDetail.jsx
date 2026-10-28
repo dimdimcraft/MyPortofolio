@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -30,6 +30,93 @@ import affinityIcon from '../assets/tools/affinity.webp'
 export default function ProjectDesignDetail() {
   const [activeTab, setActiveTab] = useState('all') // 'all', 'event-promotional', 'social-media-editorial'
   const [activeImageModal, setActiveImageModal] = useState(null) // { title, images, currentIndex }
+
+  // Horizontal scroll tabs state & refs
+  const tabsRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+  const isDownRef = useRef(false)
+  const startXRef = useRef(0)
+  const scrollLeftRef = useRef(0)
+  const hasDraggedRef = useRef(false)
+
+  const checkTabsScroll = () => {
+    if (!tabsRef.current) return
+    const { scrollLeft, scrollWidth, clientWidth } = tabsRef.current
+    setCanScrollLeft(scrollLeft > 6)
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 6)
+  }
+
+  useEffect(() => {
+    const el = tabsRef.current
+    if (!el) return
+
+    checkTabsScroll()
+
+    const handleScroll = () => checkTabsScroll()
+
+    // Smooth horizontal wheel scroll
+    const handleWheel = (e) => {
+      if (Math.abs(e.deltaY) > 0) {
+        const atLeft = el.scrollLeft <= 0 && e.deltaY < 0
+        const atRight = el.scrollLeft >= el.scrollWidth - el.clientWidth && e.deltaY > 0
+        if (!atLeft && !atRight) {
+          e.preventDefault()
+          el.scrollLeft += e.deltaY * 0.9
+        }
+      }
+    }
+
+    el.addEventListener('scroll', handleScroll, { passive: true })
+    el.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('resize', checkTabsScroll)
+
+    return () => {
+      el.removeEventListener('scroll', handleScroll)
+      el.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('resize', checkTabsScroll)
+    }
+  }, [])
+
+  const scrollTabs = (direction) => {
+    if (!tabsRef.current) return
+    const offset = direction === 'left' ? -260 : 260
+    tabsRef.current.scrollBy({ left: offset, behavior: 'smooth' })
+  }
+
+  const handleMouseDown = (e) => {
+    if (!tabsRef.current) return
+    isDownRef.current = true
+    hasDraggedRef.current = false
+    startXRef.current = e.pageX - tabsRef.current.offsetLeft
+    scrollLeftRef.current = tabsRef.current.scrollLeft
+  }
+
+  const handleMouseLeave = () => {
+    isDownRef.current = false
+  }
+
+  const handleMouseUp = () => {
+    isDownRef.current = false
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDownRef.current || !tabsRef.current) return
+    const x = e.pageX - tabsRef.current.offsetLeft
+    const walk = x - startXRef.current
+    if (Math.abs(walk) > 4) {
+      hasDraggedRef.current = true
+    }
+    tabsRef.current.scrollLeft = scrollLeftRef.current - walk
+  }
+
+  const handleTabClick = (id) => {
+    if (hasDraggedRef.current) {
+      hasDraggedRef.current = false
+      return
+    }
+    setActiveTab(id)
+  }
 
   // Scroll to top on page load
   useEffect(() => {
@@ -291,8 +378,11 @@ export default function ProjectDesignDetail() {
         {/* ========================================================== */}
         {/* CATEGORY SWITCHER PILLS (STICKY / FILTER)                  */}
         {/* ========================================================== */}
+        {/* ========================================================== */}
+        {/* CATEGORY SWITCHER PILLS (SLIDEABLE / FILTER)               */}
+        {/* ========================================================== */}
         <div id="category-selector" className="mb-12 scroll-mt-28">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
             <div>
               <span className="text-xs font-mono uppercase tracking-wider text-neutral-400">Bidang Desain Grafis</span>
               <h2 className="text-xl md:text-2xl font-bold text-neutral-900 tracking-tight">
@@ -300,43 +390,125 @@ export default function ProjectDesignDetail() {
               </h2>
             </div>
 
-            <span className="text-xs font-mono text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full border border-neutral-200/60">
-              Menampilkan {displayedCategories.length} dari {designCategoriesData.length} Bidang Desain
-            </span>
+            <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+              <span className="text-xs font-mono text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full border border-neutral-200/60">
+                Menampilkan {displayedCategories.length} dari {designCategoriesData.length} Bidang Desain
+              </span>
+
+              {/* Prev / Next Scroll Buttons (Slide Navigation) */}
+              <div className="flex items-center gap-1 bg-neutral-100/80 p-1 rounded-full border border-neutral-200/80">
+                <button
+                  type="button"
+                  onClick={() => scrollTabs('left')}
+                  disabled={!canScrollLeft}
+                  aria-label="Slide ke kiri"
+                  title="Slide ke kiri"
+                  className={cn(
+                    'w-7 h-7 rounded-full flex items-center justify-center transition-all cursor-pointer',
+                    canScrollLeft
+                      ? 'bg-white text-[#0A213D] shadow-2xs hover:bg-[#FFB800] hover:text-[#0A213D]'
+                      : 'text-neutral-300 opacity-40 cursor-not-allowed'
+                  )}
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollTabs('right')}
+                  disabled={!canScrollRight}
+                  aria-label="Slide ke kanan"
+                  title="Slide ke kanan"
+                  className={cn(
+                    'w-7 h-7 rounded-full flex items-center justify-center transition-all cursor-pointer',
+                    canScrollRight
+                      ? 'bg-white text-[#0A213D] shadow-2xs hover:bg-[#FFB800] hover:text-[#0A213D]'
+                      : 'text-neutral-300 opacity-40 cursor-not-allowed'
+                  )}
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Segmented Filter Buttons */}
-          <div className="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none">
-            <button
-              type="button"
-              onClick={() => setActiveTab('all')}
-              className={cn(
-                'px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-2',
-                activeTab === 'all'
-                  ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
-                  : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
-              )}
-            >
-              <Layers className="w-4 h-4" />
-              <span>Semua Bidang ({designCategoriesData.length} Kategori)</span>
-            </button>
+          {/* Slideable Tabs Wrapper with Left/Right Fade Gradients & Drag/Touch Support */}
+          <div className="relative group/tabs">
+            {/* Left fade gradient */}
+            {canScrollLeft && (
+              <div className="absolute left-0 top-0 bottom-2 w-8 sm:w-12 bg-gradient-to-r from-[#FDFDFD] via-[#FDFDFD]/90 to-transparent pointer-events-none z-10" />
+            )}
 
-            {designCategoriesData.map((cat) => (
+            {/* Right fade gradient */}
+            {canScrollRight && (
+              <div className="absolute right-0 top-0 bottom-2 w-8 sm:w-12 bg-gradient-to-l from-[#FDFDFD] via-[#FDFDFD]/90 to-transparent pointer-events-none z-10" />
+            )}
+
+            <div
+              ref={tabsRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-3 pt-1 scroll-smooth select-none cursor-grab active:cursor-grabbing touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-neutral-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-neutral-400 [&::-webkit-scrollbar-track]:bg-neutral-100/60 [&::-webkit-scrollbar-track]:rounded-full"
+            >
               <button
-                key={cat.id}
                 type="button"
-                onClick={() => setActiveTab(cat.id)}
+                onClick={() => handleTabClick('all')}
                 className={cn(
-                  'px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-2',
-                  activeTab === cat.id
+                  'shrink-0 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-2',
+                  activeTab === 'all'
                     ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
                     : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
                 )}
               >
-                <FolderOpen className="w-4 h-4 text-[#FFB800]" />
-                <span>{cat.title} ({cat.items.length})</span>
+                <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                <span className="sm:hidden">Semua ({designCategoriesData.length})</span>
+                <span className="hidden sm:inline">Semua Bidang ({designCategoriesData.length} Kategori)</span>
               </button>
-            ))}
+
+              {designCategoriesData.map((cat) => {
+                const getCategoryIcon = (id) => {
+                  switch (id) {
+                    case 'event-promotional':
+                      return <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                    case 'social-editorial':
+                      return <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                    case 'gate-entrance':
+                      return <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                    case 'poster-art':
+                      return <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                    default:
+                      return <FolderOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800] shrink-0" />
+                  }
+                }
+
+                const getShortTitle = (title) => {
+                  if (title.includes('Event & Promotional')) return 'Event & Promo'
+                  if (title.includes('Social Media')) return 'Social Media'
+                  if (title.includes('Event Gate')) return 'Gate & Entrance'
+                  if (title.includes('Poster Art')) return 'Poster Art'
+                  return title
+                }
+
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => handleTabClick(cat.id)}
+                    className={cn(
+                      'shrink-0 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-2',
+                      activeTab === cat.id
+                        ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
+                        : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
+                    )}
+                  >
+                    {getCategoryIcon(cat.id)}
+                    <span className="sm:hidden">{getShortTitle(cat.title)} ({cat.items.length})</span>
+                    <span className="hidden sm:inline">{cat.title} ({cat.items.length})</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
 
@@ -491,28 +663,22 @@ export default function ProjectDesignDetail() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href="https://wa.me/6281959125564"
               target="_blank"
               rel="noreferrer"
-              className="bg-[#FFB800] hover:bg-[#e5a600] text-[#0A213D] font-bold px-6 py-3.5 rounded-full text-xs sm:text-sm transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#FFB800] hover:bg-[#e5a600] text-[#0A213D] font-bold px-4 sm:px-6 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap text-center"
             >
               <span>Chat via WhatsApp</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
             </a>
             <a
               href="mailto:dimdimcraft.id@gmail.com"
-              className="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3.5 rounded-full text-xs sm:text-sm transition-colors border border-white/15 inline-flex items-center gap-2"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-4 sm:px-5 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm transition-colors border border-white/15 whitespace-nowrap text-center"
             >
               <span>Kirim Email</span>
             </a>
-            <Link
-              to="/"
-              className="bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white font-medium px-4 py-3.5 rounded-full text-xs transition-colors border border-white/10"
-            >
-              Kembali ke Beranda
-            </Link>
           </div>
         </div>
       </main>

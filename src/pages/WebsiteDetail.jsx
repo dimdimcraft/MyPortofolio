@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowLeft,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   Globe,
   Layers,
@@ -66,6 +68,93 @@ export default function WebsiteDetail() {
     'education-community': false,
     'agriculture-others': false
   })
+
+  // Horizontal scroll tabs state & refs for Archive categories
+  const tabsRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+  const isDownRef = useRef(false)
+  const startXRef = useRef(0)
+  const scrollLeftRef = useRef(0)
+  const hasDraggedRef = useRef(false)
+
+  const checkTabsScroll = () => {
+    if (!tabsRef.current) return
+    const { scrollLeft, scrollWidth, clientWidth } = tabsRef.current
+    setCanScrollLeft(scrollLeft > 6)
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 6)
+  }
+
+  useEffect(() => {
+    const el = tabsRef.current
+    if (!el) return
+
+    checkTabsScroll()
+
+    const handleScroll = () => checkTabsScroll()
+
+    // Smooth horizontal wheel scroll
+    const handleWheel = (e) => {
+      if (Math.abs(e.deltaY) > 0) {
+        const atLeft = el.scrollLeft <= 0 && e.deltaY < 0
+        const atRight = el.scrollLeft >= el.scrollWidth - el.clientWidth && e.deltaY > 0
+        if (!atLeft && !atRight) {
+          e.preventDefault()
+          el.scrollLeft += e.deltaY * 0.9
+        }
+      }
+    }
+
+    el.addEventListener('scroll', handleScroll, { passive: true })
+    el.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('resize', checkTabsScroll)
+
+    return () => {
+      el.removeEventListener('scroll', handleScroll)
+      el.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('resize', checkTabsScroll)
+    }
+  }, [])
+
+  const scrollTabs = (direction) => {
+    if (!tabsRef.current) return
+    const offset = direction === 'left' ? -260 : 260
+    tabsRef.current.scrollBy({ left: offset, behavior: 'smooth' })
+  }
+
+  const handleMouseDown = (e) => {
+    if (!tabsRef.current) return
+    isDownRef.current = true
+    hasDraggedRef.current = false
+    startXRef.current = e.pageX - tabsRef.current.offsetLeft
+    scrollLeftRef.current = tabsRef.current.scrollLeft
+  }
+
+  const handleMouseLeave = () => {
+    isDownRef.current = false
+  }
+
+  const handleMouseUp = () => {
+    isDownRef.current = false
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDownRef.current || !tabsRef.current) return
+    const x = e.pageX - tabsRef.current.offsetLeft
+    const walk = x - startXRef.current
+    if (Math.abs(walk) > 4) {
+      hasDraggedRef.current = true
+    }
+    tabsRef.current.scrollLeft = scrollLeftRef.current - walk
+  }
+
+  const handleTabClick = (id) => {
+    if (hasDraggedRef.current) {
+      hasDraggedRef.current = false
+      return
+    }
+    setActiveCategoryTab(id)
+  }
 
   // Scroll to top on page load
   useEffect(() => {
@@ -390,12 +479,12 @@ export default function WebsiteDetail() {
                 </div>
 
                 {/* Card Content Grid */}
-                <div className="p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                <div className="p-4 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
 
                   {/* Left Column: Visual Browser Preview Area */}
                   <div className="lg:col-span-7">
                     <div className={cn(
-                      "relative aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-800 shadow-xl bg-gradient-to-br flex flex-col justify-between p-6 sm:p-8 text-white group",
+                      "relative min-h-[250px] sm:min-h-0 sm:aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-800 shadow-xl bg-gradient-to-br flex flex-col justify-between p-4 sm:p-7 text-white group",
                       project.theme.gradient
                     )}>
                       {/* Subtle Ambient Glow */}
@@ -405,37 +494,38 @@ export default function WebsiteDetail() {
                       />
 
                       {/* Header Inside Visual Mockup */}
-                      <div className="flex items-center justify-between relative z-10">
-                        <span className="text-xs font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-md border border-white/15">
-                          {project.category}
+                      <div className="flex items-center justify-between gap-2 relative z-10">
+                        <span className="text-[10px] sm:text-xs font-mono uppercase font-bold tracking-wider px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/10 backdrop-blur-md border border-white/15 whitespace-nowrap">
+                          <span className="sm:hidden">{project.category.replace('Website ', '')}</span>
+                          <span className="hidden sm:inline">{project.category}</span>
                         </span>
-                        <span className="text-xs font-bold text-neutral-300 flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-[10px] sm:text-xs font-bold text-neutral-300 flex items-center gap-1 shrink-0 whitespace-nowrap bg-black/20 sm:bg-transparent px-2 py-0.5 sm:px-0 sm:py-0 rounded-full">
+                          <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
                           <span>WordPress Ready</span>
                         </span>
                       </div>
 
                       {/* Center Mockup Stage */}
-                      <div className="my-auto text-center relative z-10 py-6">
-                        <h4 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-2">
+                      <div className="my-auto text-center relative z-10 py-3 sm:py-6">
+                        <h4 className="text-xl sm:text-3xl font-black tracking-tight text-white mb-1.5 sm:mb-2">
                           {project.name}
                         </h4>
-                        <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto line-clamp-2">
+                        <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto line-clamp-2 leading-relaxed">
                           {project.description}
                         </p>
                       </div>
 
                       {/* Bottom Mockup Action & Meta Bar */}
-                      <div className="relative z-10 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                          <span className="font-mono text-neutral-300">{project.domain}</span>
+                      <div className="relative z-10 pt-3 sm:pt-4 border-t border-white/10 flex items-center justify-between gap-2 text-xs">
+                        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                          <span className="font-mono text-neutral-300 text-[11px] sm:text-xs truncate">{project.domain}</span>
                         </div>
                         <a
                           href={project.externalUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 font-bold px-3 py-1.5 rounded-full bg-white text-[#0A213D] hover:bg-[#FFB800] transition-colors shadow-sm"
+                          className="inline-flex items-center gap-1.5 font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white text-[#0A213D] hover:bg-[#FFB800] transition-colors shadow-sm text-[10px] sm:text-xs shrink-0 whitespace-nowrap"
                         >
                           <span>Kunjungi Domain</span>
                           <ExternalLink className="w-3 h-3" />
@@ -457,16 +547,16 @@ export default function WebsiteDetail() {
                         </span>
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl font-black text-[#0A213D] tracking-tight mb-3">
+                      <h3 className="text-xl sm:text-3xl font-black text-[#0A213D] tracking-tight mb-2 sm:mb-3">
                         {project.name}
                       </h3>
 
-                      <p className="text-sm text-neutral-600 leading-relaxed mb-6">
+                      <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-4 sm:mb-6">
                         {project.description}
                       </p>
 
                       {/* Feature Highlights */}
-                      <div className="space-y-2 mb-6">
+                      <div className="space-y-2 mb-4 sm:mb-6">
                         <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-wider block">
                           Hasil &amp; Fitur Utama:
                         </span>
@@ -479,7 +569,7 @@ export default function WebsiteDetail() {
                       </div>
 
                       {/* Technology Pills */}
-                      <div className="flex flex-wrap items-center gap-1.5 mb-8">
+                      <div className="flex flex-wrap items-center gap-1.5 mb-6 sm:mb-8">
                         {project.platformTags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
@@ -497,7 +587,7 @@ export default function WebsiteDetail() {
                         href={project.externalUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2.5 bg-[#0A213D] text-white hover:bg-[#122e54] px-6 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md group"
+                        className="inline-flex items-center justify-center gap-2.5 bg-[#0A213D] text-white hover:bg-[#122e54] px-6 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md group w-full sm:w-auto"
                       >
                         <span>Kunjungi Website</span>
                         <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -613,11 +703,45 @@ export default function WebsiteDetail() {
               <span className="text-xs font-mono text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full border border-neutral-200/60 hidden sm:inline">
                 2024 – 2025
               </span>
+
+              {/* Prev / Next Scroll Buttons (Slide Navigation) */}
+              <div className="flex items-center gap-1 bg-neutral-100/80 p-1 rounded-full border border-neutral-200/80">
+                <button
+                  type="button"
+                  onClick={() => scrollTabs('left')}
+                  disabled={!canScrollLeft}
+                  aria-label="Slide ke kiri"
+                  title="Slide ke kiri"
+                  className={cn(
+                    'w-7 h-7 rounded-full flex items-center justify-center transition-all cursor-pointer',
+                    canScrollLeft
+                      ? 'bg-white text-[#0A213D] shadow-2xs hover:bg-[#FFB800] hover:text-[#0A213D]'
+                      : 'text-neutral-300 opacity-40 cursor-not-allowed'
+                  )}
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollTabs('right')}
+                  disabled={!canScrollRight}
+                  aria-label="Slide ke kanan"
+                  title="Slide ke kanan"
+                  className={cn(
+                    'w-7 h-7 rounded-full flex items-center justify-center transition-all cursor-pointer',
+                    canScrollRight
+                      ? 'bg-white text-[#0A213D] shadow-2xs hover:bg-[#FFB800] hover:text-[#0A213D]'
+                      : 'text-neutral-300 opacity-40 cursor-not-allowed'
+                  )}
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Archive Filter & Search Controls Bar */}
-          <div className="bg-white rounded-2xl border border-neutral-200/90 p-4 sm:p-5 shadow-2xs mb-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <div className="bg-white rounded-2xl border border-neutral-200/90 p-4 sm:p-5 shadow-2xs mb-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
             {/* Search Input */}
             <div className="relative flex-1 max-w-md">
@@ -660,38 +784,70 @@ export default function WebsiteDetail() {
             </div>
           </div>
 
-          {/* Category Filter Pills (Horizontal Scrollable) */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
-            <button
-              type="button"
-              onClick={() => setActiveCategoryTab('all')}
-              className={cn(
-                'px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-1.5',
-                activeCategoryTab === 'all'
-                  ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
-                  : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
-              )}
-            >
-              <span>Semua Sektor (8 Kategori)</span>
-            </button>
+          {/* Category Filter Pills (Horizontal Scrollable with Slide Hints) */}
+          <div className="relative group/tabs mb-6">
+            {canScrollLeft && (
+              <div className="absolute left-0 top-0 bottom-2 w-8 sm:w-12 bg-gradient-to-r from-[#FDFDFD] via-[#FDFDFD]/90 to-transparent pointer-events-none z-10" />
+            )}
+            {canScrollRight && (
+              <div className="absolute right-0 top-0 bottom-2 w-8 sm:w-12 bg-gradient-to-l from-[#FDFDFD] via-[#FDFDFD]/90 to-transparent pointer-events-none z-10" />
+            )}
 
-            {websiteArchiveGroups.map((group) => (
+            <div
+              ref={tabsRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              className="flex items-center gap-2 overflow-x-auto pb-3 pt-1 scroll-smooth select-none cursor-grab active:cursor-grabbing touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-neutral-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-neutral-400 [&::-webkit-scrollbar-track]:bg-neutral-100/60 [&::-webkit-scrollbar-track]:rounded-full"
+            >
               <button
-                key={group.id}
                 type="button"
-                onClick={() => setActiveCategoryTab(group.id)}
+                onClick={() => handleTabClick('all')}
                 className={cn(
-                  'px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-1.5',
-                  activeCategoryTab === group.id
+                  'shrink-0 px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-1.5',
+                  activeCategoryTab === 'all'
                     ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
                     : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
                 )}
               >
-                <span className="font-mono text-[#FFB800]">{group.code}.</span>
-                <span>{group.name}</span>
-                <span className="text-[10px] opacity-70">({group.domains.length})</span>
+                <span className="sm:hidden">Semua ({websiteArchiveGroups.length})</span>
+                <span className="hidden sm:inline">Semua Sektor (8 Kategori)</span>
               </button>
-            ))}
+
+              {websiteArchiveGroups.map((group) => {
+                const getShortGroupName = (name) => {
+                  if (name.includes('Property')) return 'Property & Interior'
+                  if (name.includes('Construction')) return 'Construction'
+                  if (name.includes('Automotive')) return 'Automotive & Transport'
+                  if (name.includes('Travel')) return 'Travel & Hospitality'
+                  if (name.includes('Services')) return 'Services & Business'
+                  if (name.includes('Health')) return 'Health & Beauty'
+                  if (name.includes('Education')) return 'Education'
+                  if (name.includes('Agriculture')) return 'Agriculture'
+                  return name
+                }
+
+                return (
+                  <button
+                    key={group.id}
+                    type="button"
+                    onClick={() => handleTabClick(group.id)}
+                    className={cn(
+                      'shrink-0 px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer select-none flex items-center gap-1.5',
+                      activeCategoryTab === group.id
+                        ? 'bg-[#0A213D] text-white shadow-sm ring-2 ring-[#0A213D]/20'
+                        : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:bg-neutral-50'
+                    )}
+                  >
+                    <span className="font-mono text-[#FFB800]">{group.code}.</span>
+                    <span className="sm:hidden">{getShortGroupName(group.name)}</span>
+                    <span className="hidden sm:inline">{group.name}</span>
+                    <span className="text-[10px] opacity-70">({group.domains.length})</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           {/* Group Accordions */}
@@ -716,38 +872,55 @@ export default function WebsiteDetail() {
                     <button
                       type="button"
                       onClick={() => toggleGroup(group.id)}
-                      className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-neutral-50/70 transition-colors cursor-pointer select-none"
+                      className="w-full p-3.5 sm:p-5 flex items-center justify-between gap-3 sm:gap-4 text-left hover:bg-neutral-50/70 transition-colors cursor-pointer select-none"
                       aria-expanded={isExpanded}
                     >
-                      <div className="flex items-center gap-3.5 min-w-0">
-                        <div className="w-10 h-10 rounded-xl bg-[#0A213D]/5 border border-[#0A213D]/10 flex items-center justify-center shrink-0 text-[#0A213D]">
-                          <IconComponent className="w-5 h-5 text-[#0A213D]" />
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0A213D]/5 border border-[#0A213D]/10 flex items-center justify-center shrink-0 text-[#0A213D]">
+                          <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-[#0A213D]" />
                         </div>
 
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#FFB800] text-[#0A213D]">
+                        <div className="min-w-0 flex-1">
+                          {/* Mobile Layout: Badge + Domain Count on top line, full Name underneath */}
+                          <div className="flex items-center gap-2 mb-1 sm:hidden">
+                            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#FFB800] text-[#0A213D]">
                               GROUP {group.code}
                             </span>
-                            <h4 className="text-sm sm:text-base font-extrabold text-[#0A213D] truncate">
+                            <span className="text-[10px] font-mono font-semibold text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded-full">
+                              {group.domains.length} Domain
+                            </span>
+                          </div>
+
+                          {/* Desktop Layout: Badge + Name in one row */}
+                          <div className="hidden sm:flex items-center gap-2">
+                            <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#FFB800] text-[#0A213D] shrink-0">
+                              GROUP {group.code}
+                            </span>
+                            <h4 className="text-base font-extrabold text-[#0A213D]">
                               {group.name}
                             </h4>
                           </div>
+
+                          {/* Mobile Name: Clean, Bold, Never Truncated */}
+                          <h4 className="text-xs sm:hidden font-extrabold text-[#0A213D] leading-snug">
+                            {group.name}
+                          </h4>
+
                           <p className="text-xs text-neutral-500 mt-0.5 hidden sm:block">
                             {group.description}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 shrink-0">
-                        <span className="text-xs font-mono font-bold text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full">
+                      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                        <span className="text-xs font-mono font-bold text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full hidden sm:inline-block">
                           {group.domains.length} Domain
                         </span>
-                        <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600 shrink-0">
                           {isExpanded ? (
-                            <ChevronUp className="w-4 h-4" />
+                            <ChevronUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           ) : (
-                            <ChevronDown className="w-4 h-4" />
+                            <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           )}
                         </div>
                       </div>
@@ -828,28 +1001,22 @@ export default function WebsiteDetail() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href="https://wa.me/6281959125564"
               target="_blank"
               rel="noreferrer"
-              className="bg-[#FFB800] hover:bg-[#e5a600] text-[#0A213D] font-bold px-7 py-3.5 rounded-full text-xs sm:text-sm transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#FFB800] hover:bg-[#e5a600] text-[#0A213D] font-bold px-4 sm:px-6 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap text-center"
             >
               <span>Chat via WhatsApp</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
             </a>
             <a
               href="mailto:dimdimcraft.id@gmail.com"
-              className="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3.5 rounded-full text-xs sm:text-sm transition-colors border border-white/15 inline-flex items-center gap-2"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-4 sm:px-5 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm transition-colors border border-white/15 whitespace-nowrap text-center"
             >
               <span>Kirim Email</span>
             </a>
-            <Link
-              to="/"
-              className="bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white font-medium px-4 py-3.5 rounded-full text-xs transition-colors border border-white/10"
-            >
-              Kembali ke Beranda
-            </Link>
           </div>
         </div>
       </main>
